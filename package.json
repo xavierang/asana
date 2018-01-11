@@ -1,0 +1,25 @@
+{
+  "name": "asana",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "xavierang <sgtxav@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "blendid": "^4.3.1",
+    "inuitcss": "^6.0.0-beta.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.10.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-prettier": "^2.0.0",
+    "stylelint-order": "^0.8.0",
+    "stylelint-scss": "^2.2.0"
+  }
+}
