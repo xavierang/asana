@@ -3,6 +3,11 @@
 
 .c-forminput__project {
   padding: 10px $inuit-global-spacing-unit;
+  .c-icon:focus + .c-forminput__text {
+    border: 1px solid $gray-chateau;
+    animation-name: fade-in-then-out;
+    animation-duration: 0.5s;
+  }
 }
 
 .c-forminput__task {
@@ -25,6 +30,8 @@
     }
     &:focus {
       border: 1px solid $gray-chateau;
+      animation-name: fade-in-then-out;
+      animation-duration: 0.5s;
     }
   }
   .c-icon {
@@ -61,6 +68,8 @@
     }
     &:focus {
       border: 1px solid $gray-chateau;
+      animation-name: fade-in-then-out;
+      animation-duration: 0.5s;
     }
   }
   &:after {
@@ -78,6 +87,7 @@
 .c-forminput__text {
   flex: 1;
   outline: none;
+  border-radius: $global-radius;
   border: none;
   overflow: hidden;
   resize: none;
@@ -91,5 +101,9 @@
     box-shadow: 0 0 0 1px transparent;
   }
   50% {
+    box-shadow: 0 0 0 1px $dodger-blue;
+  }
+  100% {
+    box-shadow: 0 0 0 1px transparent;
   }
 }
