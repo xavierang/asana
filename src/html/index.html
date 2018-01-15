@@ -1,13 +1,17 @@
 {# Nunjucks Templating! Homepage: https://mozilla.github.io/nunjucks/ Docs: https://mozilla.github.io/nunjucks/api.html #}
 {% extends 'layouts/application.html' %} {% block content %}
 <div class="c-app">
+
   <div class="c-list">
+
     <div class="c-list__header">
       <button class="c-btn  c-btn--primary">Add Task</button>
       <button class="c-btn  c-btn--secondary">Add Section</button>
       <button class="u-button-reset  c-list__icon">{{sprite("equalizer")}}</button>
     </div>
+
     <div class="c-list__body">
+
       <div class="c-taskitem">
         <div class="c-taskitem--left">
           <button class="u-button-reset c-icon c-icon--hidden">{{sprite("grid")}}</button>
@@ -18,6 +22,7 @@
           <button class="u-button-reset c-icon c-icon--hidden">{{sprite("circle")}}</button>
         </div>
       </div>
+
       <div class="c-taskitem">
         <div class="c-taskitem--left">
           <button class="u-button-reset c-icon c-icon--hidden">{{sprite("grid")}}</button>
@@ -30,10 +35,12 @@
       </div>
 
     </div>
+
   </div>
 
   <div class="c-form">
     <div class="c-form__overflow">
+
       <div class="c-form__editable">
         <div class="c-forminput">
           <div class="c-forminput__project">
@@ -55,12 +62,36 @@
 
       <div class="c-form__info">
         <div class="c-detail">
-          <p class="c-detail__text">Task created.
-            <b>10:24</b>
-          </p>
-          <p class="c-detail__text">Assigned to you.
-            <b>10:24</b>
-          </p>
+          <div class="c-detail__time">
+
+            <p class="c-detail__text">Task created.
+              <b>10:24</b>
+            </p>
+
+            <p class="c-detail__text">Assigned to you.
+              <b>10:24</b>
+            </p>
+
+          </div>
+
+          <div class="c-detail__comment">
+            <div class="c-comment">
+              <div class="c-comment__avatar">
+                <div class="c-comment--photo"></div>
+              </div>
+
+              <div class="c-comment__header">
+                <p class="c-comment--user">Xavier Ang</p>
+                <p class="c-comment--time">Today at 16:19</p>
+              </div>
+
+              <div class="c-comment__body">
+                <p class="c-comment--post">This website is looking good</p>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
