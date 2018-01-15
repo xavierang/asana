@@ -1,7 +1,77 @@
 {# Nunjucks Templating! Homepage: https://mozilla.github.io/nunjucks/ Docs: https://mozilla.github.io/nunjucks/api.html #}
 {% extends 'layouts/application.html' %} {% block content %}
-<h1 data-module="example">{{ message }}</h1>
-<button class="c-btn  c-btn--primary">
-  <span>Our Big Button</span>
-</button>
-{% endblock %}
+<div class="c-app">
+  <div class="c-list">
+    <div class="c-list__header">
+      <button class="c-btn  c-btn--primary">Add Task</button>
+      <button class="c-btn  c-btn--secondary">Add Section</button>
+      <button class="u-button-reset  c-list__icon">{{sprite("equalizer")}}</button>
+    </div>
+    <div class="c-list__body">
+      <div class="c-taskitem">
+        <div class="c-taskitem--left">
+          <button class="u-button-reset c-icon c-icon--hidden">{{sprite("grid")}}</button>
+        </div>
+        <div class="c-taskitem--right">
+          <button class="u-button-reset c-icon">{{sprite("checkmark2")}}</button>
+          <textarea class="c-taskitem--item" placeholder=""></textarea>
+          <button class="u-button-reset c-icon c-icon--hidden">{{sprite("circle")}}</button>
+        </div>
+      </div>
+      <div class="c-taskitem">
+        <div class="c-taskitem--left">
+          <button class="u-button-reset c-icon c-icon--hidden">{{sprite("grid")}}</button>
+        </div>
+        <div class="c-taskitem--right">
+          <button class="u-button-reset c-icon">{{sprite("checkmark2")}}</button>
+          <textarea class="c-taskitem--item" placeholder=""></textarea>
+          <button class="u-button-reset c-icon c-icon--hidden">{{sprite("circle")}}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="c-form">
+    <div class="c-form--overflow">
+      <div class="c-form__editable">
+        <div class="c-forminput">
+          <div class="c-forminput__project">
+            <button class="u-button-reset c-icon">Add to Project</button>
+            <input class="c-forminput__text" type="text" placeholder="Add to a Project" />
+          </div>
+
+          <div class="c-forminput__task">
+            <button class="u-button-reset c-icon">{{sprite("checkmark2")}}</button>
+            <input class="c-forminput__text" type="text" placeholder="Write a task name" />
+          </div>
+
+          <div class="c-forminput__desc">
+            <button class="u-button-reset c-icon--static">{{sprite("text")}}</button>
+            <textarea class="c-forminput__text" type="text" placeholder="Description" onfocus="this.placeholder=''" onblur="this.placeholder='Description'"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-form__info">
+        <div class="c-formdetail">
+          <p class="c-formdetail__text">Task created.
+            <span class="c-formdetail__text  c-formdetail__text-bold">10:24</span>
+          </p>
+          <p class="c-formdetail__text">Assigned to you.
+            <span class="c-formdetail__text  c-formdetail__text-bold">10:24</span>
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="c-form__comment">
+      <form class="c-formcomment">
+        <textarea class="c-formcomment__text" type="text" placeholder="Write a comment..." onfocus="this.placeholder = ''" onblur="this.placeholder='Write a comment...'"></textarea>
+        <button type="submit" class=" c-formcomment__btn">Comment</button>
+      </form>
+    </div>
+
+  </div>
+</div> {% endblock %}

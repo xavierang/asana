@@ -1,0 +1,17 @@
+.c-formdetail {
+  margin-left: calc(3*#{$inuit-global-spacing-unit});
+  margin-right: $inuit-global-spacing-unit;
+}
+
+.c-formdetail__text {
+  font-size: $global-font-size-small;
+  color: $regent-gray;
+  margin: 0;
+  &:last-child {
+    padding-bottom: 50px;
+  }
+}
+
+.c-formdetail__text-bold {
+  font-weight: bold;
+}

@@ -20,3 +20,10 @@ html {
   overflow-y: scroll; /* [2] */
   min-height: 100%; /* [3] */
 }
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // padding-top: $inuit-global-spacing-unit;
+  text-rendering: optimizeLegibility;
+  background-image: linear-gradient(to bottom, #f6f8f9, #edf1f2);
+}

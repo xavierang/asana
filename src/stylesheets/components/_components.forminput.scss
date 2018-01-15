@@ -1,0 +1,95 @@
+.c-forminput {
+}
+
+.c-forminput__project {
+  padding: 10px $inuit-global-spacing-unit;
+}
+
+.c-forminput__task {
+  margin-right: $inuit-global-spacing-unit;
+  margin-left: $inuit-global-spacing-unit;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .c-forminput__text {
+    font-size: $global-font-size-large;
+    height: auto;
+    padding-left: 40px;
+    border: 1px solid transparent;
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    &:hover {
+      border: 1px solid $geyser;
+    }
+    &:focus {
+      border: 1px solid $gray-chateau;
+    }
+  }
+  .c-icon {
+    position: absolute;
+    flex: 0 0 30px;
+    .sprite {
+      height: 24px;
+      display: block;
+      svg {
+        height: 24px;
+      }
+    }
+    &:hover {
+      fill: $aquamarine;
+    }
+  }
+}
+
+.c-forminput__desc {
+  margin: $inuit-global-spacing-unit;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  .c-icon--static {
+    flex: 0 0 30px;
+  }
+  .c-forminput__text {
+    height: 75px;
+    border: 1px solid transparent;
+    margin-left: 4px;
+    &:hover {
+      border: 1px solid $geyser;
+    }
+    &:focus {
+      border: 1px solid $gray-chateau;
+    }
+  }
+  &:after {
+    border-bottom: 1px solid $geyser;
+    bottom: -1px;
+    content: "";
+    display: block;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.c-forminput__text {
+  flex: 1;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  resize: none;
+  padding: 5px;
+  font-size: $global-font-size;
+  height: auto;
+}
+
+@keyframes fade-in-then-out {
+  0% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+  50% {
+  }
+}
