@@ -1,6 +1,7 @@
 .c-detail {
-  margin-left: calc(3*#{$inuit-global-spacing-unit});
+  margin-left: $inuit-global-spacing-unit;
   margin-right: $inuit-global-spacing-unit;
+  padding-left: calc(2*#{$inuit-global-spacing-unit});
 }
 
 .c-detail__text {
@@ -8,6 +9,10 @@
   color: $regent-gray;
   margin: 0;
   &:last-child {
-    padding-bottom: 50px;
+    padding-bottom: 10px;
   }
+}
+
+.c-detail__comment {
+  margin-left: -20px;
 }

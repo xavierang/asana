@@ -1,10 +1,33 @@
 .c-formcomment {
   display: flex;
   padding: 10px $inuit-global-spacing-unit;
+  .o-avatar {
+    margin-right: 10px;
+  }
+}
+
+.c-formcomment__header {
+  flex: 0 0 30px;
+}
+
+.c-formcomment__body {
+  flex: 1;
+  background-color: $white;
+  border: 1px solid $geyser;
+  border-radius: $global-radius;
+}
+
+.c-formcomment__body-btm {
+  transition: max-height 0.5s;
+  overflow: hidden;
+  max-height: 0;
+  border-top: 1px dotted $geyser;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .c-formcomment__text {
-  flex: 1;
+  position: relative;
   cursor: text;
   outline: none;
   overflow: hidden;
@@ -12,23 +35,22 @@
   padding: 10px;
   font-size: $global-font-size;
   line-height: $global-font-size;
-  height: calc(22px + #{$global-font-size});
-  border: 1px solid $geyser;
-  background-color: $white;
-  transition-property: height;
-  transition-duration: 0.5s;
+  height: calc(15px + #{$global-font-size});
+  width: 100%;
+  border: 0;
+  transition: height 0.5s;
   &:focus {
     height: calc(22px + (8 * #{$global-font-size}));
-    .c-formcomment__btn {
-      display: block;
+    // border: 1px solid red;
+    + .c-formcomment__body-btm {
+      max-height: 55px;
+      // border: 1px solid red;
     }
   }
 }
 
 .c-formcomment__btn {
-  margin-left: $inuit-global-spacing-unit;
   cursor: pointer;
-  flex: 0 0 20px;
   background-color: $dodger-blue;
   border-color: $dodger-blue;
   border-radius: $global-radius;
@@ -36,5 +58,6 @@
   font-size: $global-font-size;
   padding: 10px;
   height: 35px;
-  align-self: flex-end;
+  width: auto;
+  margin: 10px;
 }

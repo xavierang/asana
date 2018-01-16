@@ -3,7 +3,14 @@
 
 .c-forminput__project {
   padding: 10px $inuit-global-spacing-unit;
-  .c-icon:focus + .c-forminput__text {
+  position: relative;
+  .c-icon {
+    position: absolute;
+    top: 14px;
+    left: 17px;
+    border: 1px solid transparent;
+  }
+  .c-forminput__text:focus {
     border: 1px solid $gray-chateau;
     animation-name: fade-in-then-out;
     animation-duration: 0.5s;
@@ -94,6 +101,7 @@
   padding: 5px;
   font-size: $global-font-size;
   height: auto;
+  width: 100%;
 }
 
 @keyframes fade-in-then-out {

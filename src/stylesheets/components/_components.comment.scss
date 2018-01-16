@@ -1,0 +1,23 @@
+.c-comment {
+  display: flex;
+  margin-top: $inuit-global-spacing-unit;
+}
+
+.c-comment__header {
+  flex: 0 0 30px;
+  margin-right: 10px;
+}
+
+.c-comment__body {
+  flex: 1;
+}
+
+.c-comment--text {
+  font-size: $global-font-size;
+  margin: 0;
+  padding: 0;
+}
+
+.c-comment--text_weak {
+  opacity: 0.5;
+}
