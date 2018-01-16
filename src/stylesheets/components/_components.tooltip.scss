@@ -46,7 +46,8 @@
     border-color: $geyser;
     appearance: none;
     background-color: $white;
-    transition: color 0.2s;
+    transition-property: border, box-shadow, color;
+    transition-duration: 0.2s;
   }
   .c-icon--static {
     cursor: default;
