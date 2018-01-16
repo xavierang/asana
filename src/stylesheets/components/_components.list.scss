@@ -8,6 +8,7 @@
 }
 
 .c-list__header {
+  position: relative;
   border-radius: $global-radius $global-radius 0 0;
   box-shadow: $global-box-shadow;
   background-color: $white;
@@ -18,6 +19,9 @@
 
   .c-btn--secondary {
     margin: auto 0 0 inherit;
+  }
+  .c-list__icon:active + .c-tooltip {
+    display: block;
   }
 }
 

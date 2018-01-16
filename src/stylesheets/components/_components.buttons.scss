@@ -8,12 +8,12 @@
   border-color: $dodger-blue;
   border-radius: $global-radius;
   outline: none;
-  transition-duration: 0.2s;
-  transition-property: background, border, box-shadow, color;
+  transition-duration: 1s;
+  transition-property: border, box-shadow, color;
   &:hover {
     border-color: $white;
     box-shadow: 0 0 0 3px $dodger-blue;
-    color: $dodger-blue;
+    color: $dodger-blue !important;
     fill: $dodger-blue;
   }
 }

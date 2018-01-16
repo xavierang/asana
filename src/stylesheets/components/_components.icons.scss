@@ -1,6 +1,5 @@
 .c-icon {
   font-size: $global-font-size;
-  text-decoration: underline dotted;
   color: $regent-gray;
   fill: $submarine;
   flex: 0 0 30px;
@@ -24,6 +23,7 @@
 }
 
 .c-icon--static {
+  outline: none;
   fill: $submarine;
   flex: 0 0 30px;
   .sprite {

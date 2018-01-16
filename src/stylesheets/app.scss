@@ -54,11 +54,13 @@
 @import "inuitcss/objects/objects.wrapper";
 @import "objects/objects.stack";
 @import "objects/objects.avatar";
+@import "objects/objects.flex";
 
 // ==========================================================================||
 //  Components
 // ==========================================================================||
 
+@import "components/components.app";
 @import "components/components.buttons";
 @import "components/components.icons";
 @import "components/components.list";
@@ -68,6 +70,7 @@
 @import "components/components.detail";
 @import "components/components.formcomment";
 @import "components/components.comment";
+@import "components/components.tooltip";
 
 // ==========================================================================||
 //  Utilities

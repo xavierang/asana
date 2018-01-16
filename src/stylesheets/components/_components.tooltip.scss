@@ -1,0 +1,71 @@
+.c-tooltip {
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  right: 15px;
+  display: none;
+  height: auto;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid $geyser;
+  border-radius: $global-radius;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: $white;
+}
+
+.c-tooltip__header {
+  display: flex;
+  .c-tooltip__text {
+    color: $regent-gray;
+  }
+  .c-icon {
+    margin-left: auto;
+  }
+}
+
+.c-tooltip__radio {
+  display: flex;
+  flex-direction: column;
+  input {
+    margin-right: 10px;
+  }
+  .c-tooltip__text {
+    margin-bottom: 5px;
+  }
+}
+
+.c-tooltip__dropdown {
+  position: relative;
+  .c-tooltip__text {
+    color: $regent-gray;
+  }
+  .c-tooltip__select {
+    width: 100%;
+    margin-top: 10px;
+    color: $black;
+    border-color: $geyser;
+    appearance: none;
+    background-color: $white;
+    transition: color 0.2s;
+  }
+  .c-icon--static {
+    cursor: default;
+    fill: $black;
+    outline: none;
+    position: absolute;
+    top: 46px;
+    right: 5px;
+    .sprite {
+      height: 11px;
+      svg {
+        height: 11px;
+      }
+    }
+  }
+}
+
+.c-tooltip__text {
+  font-size: $global-font-size;
+  padding: 5px;
+  margin: 0;
+}

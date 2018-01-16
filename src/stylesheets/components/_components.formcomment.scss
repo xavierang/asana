@@ -40,11 +40,9 @@
   border: 0;
   transition: height 0.5s;
   &:focus {
-    height: calc(22px + (8 * #{$global-font-size}));
-    // border: 1px solid red;
+    height: calc(22px + (5 * #{$global-font-size}));
     + .c-formcomment__body-btm {
       max-height: 55px;
-      // border: 1px solid red;
     }
   }
 }
