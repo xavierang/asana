@@ -20,9 +20,6 @@
   justify-content: flex-start;
   align-items: center;
 
-  .c-btn--secondary {
-    margin: auto 0 0 inherit;
-  }
   .c-list__icon:focus + .c-tooltip,
   .c-list__icon:active + .c-tooltip {
     display: block;

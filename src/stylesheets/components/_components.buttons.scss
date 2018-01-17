@@ -27,7 +27,7 @@
 }
 
 .c-btn--secondary {
-  margin-left: 10px;
+  margin-left: 10px !important;
   opacity: 0;
   transition: opacity 0.2s ease-in 0.2s;
   &:hover {
