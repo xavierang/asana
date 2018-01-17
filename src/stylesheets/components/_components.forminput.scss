@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  width: 100%;
   .c-forminput__text {
     font-size: $global-font-size-large;
     height: auto;
@@ -44,7 +45,9 @@
   }
   .c-icon {
     position: absolute;
-    flex: 0 0 30px;
+    top: 5px;
+    left: 3px;
+    width: 38px;
     .sprite {
       height: 24px;
       display: block;

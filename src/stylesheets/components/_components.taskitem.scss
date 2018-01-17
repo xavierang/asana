@@ -16,6 +16,10 @@
   }
 }
 
+.c-taskitem--nohover:hover {
+  border-color: transparent;
+}
+
 .c-taskitem--left {
   flex: 0 0 30px;
   display: flex;

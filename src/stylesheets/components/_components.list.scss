@@ -5,9 +5,12 @@
   box-shadow: $global-box-shadow;
   background-color: $white;
   flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 .c-list__header {
+  flex: 0 0 auto;
   position: relative;
   border-radius: $global-radius $global-radius 0 0;
   box-shadow: $global-box-shadow;
@@ -20,9 +23,14 @@
   .c-btn--secondary {
     margin: auto 0 0 inherit;
   }
-  .c-list__icon:active + .c-tooltip {
+  .c-list__icon:focus + .c-tooltip {
     display: block;
   }
+}
+
+.c-list__body {
+  flex: 1 1 1px;
+  overflow: auto;
 }
 
 .c-list__icon {

@@ -48,9 +48,14 @@
     background-color: $white;
     transition-property: border, box-shadow, color;
     transition-duration: 0.2s;
+    //pseudo-element for the dropdown arrow for IE
+    &::-ms-expand {
+      display: none;
+    }
   }
   .c-icon--static {
     cursor: default;
+    width: 30px;
     fill: $black;
     outline: none;
     position: absolute;

@@ -1,7 +1,7 @@
 .c-formcomment {
   display: flex;
   padding: 10px $inuit-global-spacing-unit;
-  .o-avatar {
+  .c-avatar {
     margin-right: 10px;
   }
 }
@@ -21,12 +21,14 @@
   transition: max-height 0.5s;
   overflow: hidden;
   max-height: 0;
-  border-top: 1px dotted $geyser;
+  border-top: 1px dotted transparent;
+  margin-top: -1px;
   display: flex;
   justify-content: flex-end;
 }
 
 .c-formcomment__text {
+  vertical-align: top;
   position: relative;
   cursor: text;
   outline: none;
@@ -34,8 +36,7 @@
   resize: none;
   padding: 10px;
   font-size: $global-font-size;
-  line-height: $global-font-size;
-  height: calc(15px + #{$global-font-size});
+  height: 34px;
   width: 100%;
   border: 0;
   transition: height 0.5s;
@@ -43,14 +44,18 @@
     height: calc(22px + (5 * #{$global-font-size}));
     + .c-formcomment__body-btm {
       max-height: 55px;
+      border-color: $geyser;
+      margin-top: 0;
     }
   }
 }
 
 .c-formcomment__btn {
   cursor: pointer;
+  border: 0;
+  box-shadow: none;
   background-color: $dodger-blue;
-  border-color: $dodger-blue;
+  border: 1px solid transparent;
   border-radius: $global-radius;
   color: $white;
   font-size: $global-font-size;
@@ -58,4 +63,8 @@
   height: 35px;
   width: auto;
   margin: 10px;
+  &:hover {
+    box-shadow: 0 0 0 3px $dodger-blue;
+    border-color: $white;
+  }
 }
