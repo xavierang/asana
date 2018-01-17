@@ -10,7 +10,8 @@
 
 .c-form__overflow {
   flex: 1 1 1px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .c-form__comment {
