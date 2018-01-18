@@ -1,16 +1,7 @@
 .c-list {
-  margin: $inuit-global-spacing-unit;
-  margin-right: 0px;
-  border-radius: $global-radius $global-radius 0 0;
-  box-shadow: $global-box-shadow;
-  background-color: $white;
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: column;
 }
 
 .c-list__header {
-  flex: 0 0 auto;
   position: relative;
   border-radius: $global-radius $global-radius 0 0;
   box-shadow: $global-box-shadow;
@@ -19,27 +10,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
-  .c-list__icon:focus + .c-tooltip,
-  .c-list__icon:active + .c-tooltip {
-    display: block;
-  }
 }
 
 .c-list__body {
-  flex: 1 1 1px;
-  overflow: auto;
-}
-
-.c-list__icon {
-  fill: $regent-gray;
-  margin: 0 0 0 auto;
-  flex: 0 0 20px;
-  padding: 3px;
-  height: 20px;
-  outline: none;
-  &:hover {
-    cursor: pointer;
-    fill: $dodger-blue;
-  }
 }

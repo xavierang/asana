@@ -1,20 +1,10 @@
-.c-forminput {
-}
-
 .c-forminput__project {
   padding: 10px $inuit-global-spacing-unit;
   position: relative;
-  .c-icon {
-    text-decoration: underline dotted;
+  .c-icon--text {
     position: absolute;
     top: 14px;
     left: 17px;
-    border: 1px solid transparent;
-  }
-  .c-forminput__text:focus {
-    border: 1px solid $gray-chateau;
-    animation-name: fade-in-then-out;
-    animation-duration: 0.5s;
   }
 }
 
@@ -26,22 +16,8 @@
   align-items: center;
   position: relative;
   width: 100%;
-  .c-forminput__text {
-    font-size: $global-font-size-large;
-    height: auto;
+  .c-text--large {
     padding-left: 40px;
-    border: 1px solid transparent;
-    transition-property: box-shadow;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
-    &:hover {
-      border: 1px solid $geyser;
-    }
-    &:focus {
-      border: 1px solid $gray-chateau;
-      animation-name: fade-in-then-out;
-      animation-duration: 0.5s;
-    }
   }
   .c-icon {
     position: absolute;
@@ -49,16 +25,6 @@
     left: 3px;
     width: 38px;
     height: 27px;
-    .sprite {
-      height: 24px;
-      display: block;
-      svg {
-        height: 24px;
-      }
-    }
-    &:hover {
-      fill: $aquamarine;
-    }
   }
 }
 
@@ -68,21 +34,9 @@
   display: flex;
   align-items: flex-start;
   position: relative;
-  .c-icon--static {
-    flex: 0 0 30px;
-  }
-  .c-forminput__text {
+  .c-text--animation {
     height: 75px;
-    border: 1px solid transparent;
     margin-left: 4px;
-    &:hover {
-      border: 1px solid $geyser;
-    }
-    &:focus {
-      border: 1px solid $gray-chateau;
-      animation-name: fade-in-then-out;
-      animation-duration: 0.5s;
-    }
   }
   &:after {
     border-bottom: 1px solid $geyser;
@@ -93,30 +47,5 @@
     pointer-events: none;
     position: absolute;
     right: 0;
-  }
-}
-
-.c-forminput__text {
-  flex: 1;
-  outline: none;
-  border-radius: $global-radius;
-  border: none;
-  overflow: hidden;
-  resize: none;
-  padding: 5px;
-  font-size: $global-font-size;
-  height: auto;
-  width: 100%;
-}
-
-@keyframes fade-in-then-out {
-  0% {
-    box-shadow: 0 0 0 1px transparent;
-  }
-  50% {
-    box-shadow: 0 0 0 1px $dodger-blue;
-  }
-  100% {
-    box-shadow: 0 0 0 1px transparent;
   }
 }

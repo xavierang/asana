@@ -1,0 +1,24 @@
+.o-card {
+  border-radius: $global-radius $global-radius 0 0;
+  background-color: $white;
+  box-shadow: $global-box-shadow;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.o-card__header {
+  flex: 0 0 auto;
+  margin-bottom: auto;
+}
+
+.o-card__body {
+  flex: 1 1 1px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.o-card__footer {
+  margin-top: auto;
+  flex: 0 0 auto;
+}

@@ -7,23 +7,30 @@
   &:first-child {
     margin-top: 0px;
   }
+  &:first-child:hover {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid $geyser;
+  }
   &:hover {
     border-bottom: 1px solid $geyser;
     border-top: 1px solid $geyser;
-    .c-icon {
+    .c-icon--hidden {
       opacity: 1;
     }
   }
 }
 
-.c-taskitem--nohover:hover {
-  border-color: transparent;
+.c-taskitem--nohover {
+  &:hover {
+    border-color: transparent;
+  }
 }
 
 .c-taskitem--left {
   flex: 0 0 30px;
   display: flex;
 }
+
 .c-taskitem--right {
   position: relative;
   flex: 1;
@@ -31,9 +38,6 @@
   height: 32px;
   display: flex;
 
-  .c-icon:first-child:hover {
-    fill: $aquamarine;
-  }
   &:before {
     border-bottom: 1px solid $geyser;
     top: -1px;
@@ -55,38 +59,4 @@
     position: absolute;
     right: 0;
   }
-}
-
-.c-taskitem__icon {
-  fill: #b7bfc6;
-  flex: 0 0 30px;
-  outline: 0;
-  &:hover {
-    cursor: pointer;
-    fill: $dodger-blue;
-  }
-  .sprite {
-    height: 17px;
-    display: block;
-    svg {
-      height: 17px;
-    }
-  }
-}
-
-.c-taskitem__icon--hidden {
-  opacity: 0;
-}
-
-.c-taskitem--item {
-  flex: 1 1 auto;
-  align-self: center;
-  cursor: text;
-  overflow: hidden;
-  height: $global-font-size;
-  font-size: $global-font-size;
-  outline: none;
-  resize: none;
-  border: none;
-  padding: 0;
 }

@@ -2,34 +2,46 @@
   font: inherit;
   font-size: $global-font-size;
   cursor: pointer;
-  margin: auto 0;
   padding: 5px 14px 5px 14px;
-  color: $dodger-blue;
-  border-color: $dodger-blue;
-  border-radius: $global-radius;
+  transition-duration: 0.5s;
+  transition-property: border, box-shadow, color, opacity;
   outline: none;
-  background-color: $white;
+}
+
+.c-btn--border {
   border: 1px solid $dodger-blue;
-  transition-duration: 1s;
-  transition-property: border, box-shadow, color;
+  border-radius: $global-radius;
+  background-color: $white;
+  color: $dodger-blue;
   &:hover {
     border-color: $white;
     box-shadow: 0 0 0 3px $dodger-blue;
     color: $dodger-blue !important;
-    fill: $dodger-blue;
   }
-}
-
-.c-btn--primary {
-  &:hover + .c-btn--secondary {
+  &:hover + .c-btn--hidden {
     opacity: 1;
   }
 }
 
-.c-btn--secondary {
-  margin-left: 10px !important;
+.c-btn--filled {
+  box-shadow: none;
+  background-color: $dodger-blue;
+  border: 1px solid transparent;
+  border-radius: $global-radius;
+  color: $white;
+  height: 35px;
+  width: auto;
+  margin: 10px;
+  &:hover {
+    box-shadow: 0 0 0 3px $dodger-blue;
+    border-color: $white;
+  }
+}
+
+.c-btn--hidden {
+  margin-left: 10px;
   opacity: 0;
-  transition: opacity 0.2s ease-in 0.2s;
+  transition: opacity 0.2s ease-in;
   &:hover {
     opacity: 1;
   }

@@ -1,0 +1,21 @@
+<div class="c-list__body">
+
+    <div class="c-taskitem">
+        <div class="c-taskitem--left">
+            <button class="u-button-reset c-icon c-icon--hover  c-icon--hidden">{{sprite("grid")}}</button>
+        </div>
+        <div class="c-taskitem--right">
+            <button class="u-button-reset c-icon c-icon--aquamarine">{{sprite("checkmark2")}}</button>
+            <textarea class="c-text  c-text--textarea  c-text--flex" placeholder="" onfocus="this.placeholder='Write a task name'" onblur="this.placeholder=''"></textarea>
+            <button class="u-button-reset c-icon c-icon--hover  c-icon--hidden">{{sprite("circle")}}</button>
+        </div>
+    </div>
+
+
+    {% for i in range(0,25) -%}
+    <div class="c-taskitem c-taskitem--nohover">
+        <div class="c-taskitem--left"></div>
+        <div class="c-taskitem--right"></div>
+    </div> {%- endfor %}
+
+</div>

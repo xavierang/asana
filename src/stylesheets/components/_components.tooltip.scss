@@ -15,63 +15,41 @@
 
 .c-tooltip__header {
   display: flex;
-  .c-tooltip__text {
-    color: $regent-gray;
-  }
-  .c-icon {
-    margin-left: auto;
-  }
 }
 
 .c-tooltip__radio {
   display: flex;
   flex-direction: column;
-  input {
-    margin-right: 10px;
+  input[type="radio"] {
+    margin: 0 10px 5px 0;
   }
-  .c-tooltip__text {
-    margin-bottom: 5px;
+  .c-text {
+    margin-bottom: 10px;
   }
 }
 
 .c-tooltip__dropdown {
+  margin-top: 10px;
   position: relative;
-  .c-tooltip__text {
-    color: $regent-gray;
-  }
-  .c-tooltip__select {
-    width: 100%;
-    margin-top: 10px;
-    color: $black;
-    border-color: $geyser;
-    appearance: none;
-    background-color: $white;
-    transition-property: border, box-shadow, color;
-    transition-duration: 0.2s;
-    //pseudo-element for the dropdown arrow for IE
-    &::-ms-expand {
-      display: none;
-    }
-  }
-  .c-icon--static {
-    cursor: default;
-    width: 30px;
+  .c-icon {
     fill: $black;
-    outline: none;
     position: absolute;
-    top: 46px;
-    right: 5px;
-    .sprite {
-      height: 11px;
-      svg {
-        height: 11px;
-      }
-    }
+    width: 30px;
+    top: 40px;
+    right: 10px;
   }
 }
 
-.c-tooltip__text {
-  font-size: $global-font-size;
-  padding: 5px;
-  margin: 0;
+.c-tooltip__select {
+  width: 100%;
+  color: $black;
+  border-color: $geyser;
+  appearance: none;
+  background-color: $white;
+  transition-property: border, box-shadow, color;
+  transition-duration: 0.2s;
+  //pseudo-element for the dropdown arrow for IE
+  &::-ms-expand {
+    display: none;
+  }
 }

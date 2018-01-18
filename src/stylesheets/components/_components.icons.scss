@@ -1,20 +1,41 @@
 .c-icon {
+  //all icon should have this style
+  font: inherit;
   font-size: $global-font-size;
+  cursor: pointer;
   color: $regent-gray;
   fill: $submarine;
   flex: 0 0 30px;
   outline: 0;
-  &:hover {
-    cursor: pointer;
-    fill: $dodger-blue;
-    color: $dodger-blue;
-  }
+  transition-duration: 0.5s;
+  transition-property: border, box-shadow, color, opacity;
+  //default svg size for icons
   .sprite {
     height: 17px;
     display: block;
     svg {
       height: 17px;
     }
+  }
+}
+
+.c-icon--text {
+  text-decoration: underline dotted;
+  border: 1px solid transparent;
+}
+
+.c-icon--hover {
+  &:hover {
+    fill: $dodger-blue;
+    color: $dodger-blue;
+  }
+}
+
+.c-icon--right {
+  margin: 0 0 0 auto;
+  &:focus + .c-tooltip,
+  &:active + .c-tooltip {
+    display: block;
   }
 }
 
@@ -23,13 +44,12 @@
 }
 
 .c-icon--static {
-  outline: none;
+  cursor: auto;
   fill: $submarine;
-  .sprite {
-    height: 17px;
-    display: block;
-    svg {
-      height: 17px;
-    }
+}
+
+.c-icon--aquamarine {
+  &:hover {
+    fill: $aquamarine;
   }
 }

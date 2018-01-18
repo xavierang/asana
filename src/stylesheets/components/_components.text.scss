@@ -1,0 +1,50 @@
+.c-text {
+  font-size: $global-font-size;
+  height: $global-font-size;
+  color: $black;
+  border-radius: $global-radius;
+
+  outline: none;
+  resize: none;
+  cursor: text;
+}
+
+.c-text--small {
+  font-size: $global-font-size-small;
+}
+.c-text--large {
+  font-size: $global-font-size-large;
+}
+
+.c-text--faded {
+  color: $regent-gray;
+}
+
+.c-text--animation {
+  border: 1px solid transparent;
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  &:hover {
+    border: 1px solid $geyser;
+  }
+  &:focus {
+    border: 1px solid $gray-chateau;
+    animation-name: fade-in-then-out;
+    animation-duration: 0.5s;
+  }
+}
+
+.c-text--textarea {
+  border: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+}
+
+.c-text--flex {
+  flex: 1;
+}

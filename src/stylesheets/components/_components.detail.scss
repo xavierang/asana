@@ -3,14 +3,8 @@
   margin-right: $inuit-global-spacing-unit;
   padding-left: calc(2*#{$inuit-global-spacing-unit});
   padding-right: calc(2*#{$inuit-global-spacing-unit});
-}
-
-.c-detail__text {
-  font-size: $global-font-size-small;
-  color: $regent-gray;
-  margin: 0;
-  &:last-child {
-    padding-bottom: 10px;
+  .c-text {
+    margin-bottom: 5px;
   }
 }
 

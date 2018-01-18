@@ -3,191 +3,41 @@
 <div class="c-app">
   <div class="o-flex">
     <div class="o-flex--section">
-      <div class="o-card o-card--left">
-        <div class="c-list">
 
-          <div class="c-list__header">
-            <button class="c-btn  c-btn--primary">Add Task</button>
-            <button class="c-btn  c-btn--secondary">Add Section</button>
-            <button class="u-button-reset  c-list__icon">{{sprite("equalizer")}}</button>
+      <div class="o-card">
+        <div class="o-card__header">
 
-            <div class="c-tooltip">
+          {% include "./shared/list-header.html" %}
 
-              <div class="c-tooltip__header">
-                <p class="c-tooltip__text">VIEW</p>
-                <button class="u-button-reset c-icon">{{sprite("cross")}}</button>
-              </div>
+        </div>
+        <div class="o-card__body">
 
-              <div class="c-tooltip__radio">
-                <label class="c-tooltip__text">
-                  <input type="radio" name="status" value="incomplete" checked> Incomplete Task
-                </label>
-
-                <label class="c-tooltip__text">
-                  <input type="radio" name="status" value="completed"> Completed Task
-                </label>
-
-                <label class="c-tooltip__text">
-                  <input type="radio" name="status" value="all"> All Task
-                </label>
-              </div>
-
-              <div class="c-tooltip__dropdown">
-                <p class="c-tooltip__text">SORT</p>
-                <select class="c-tooltip__select c-btn" name="sort-by">
-                  <option value="" selected>None</option>
-                  <option value="project">Project</option>
-                  <option value="due-date">Due Date</option>
-                  <option value="likes">Likes</option>
-                </select>
-                <button class="u-button-reset c-icon--static">{{sprite("chevron-thin-down")}}</button>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="c-list__body">
-
-            <div class="c-taskitem">
-              <div class="c-taskitem--left">
-                <button class="u-button-reset c-icon c-icon--hidden">{{sprite("grid")}}</button>
-              </div>
-              <div class="c-taskitem--right">
-                <button class="u-button-reset c-icon">{{sprite("checkmark2")}}</button>
-                <textarea class="c-taskitem--item" placeholder="" onfocus="this.placeholder='Write a task name'" onblur="this.placeholder=''"></textarea>
-                <button class="u-button-reset c-icon c-icon--hidden">{{sprite("circle")}}</button>
-              </div>
-            </div>
-
-            <!-- Iterate this in React App -->
-            <!-- 18 blocks for default -->
-            <!-- Increase as task is added -->
-
-            {% for i in range(0,18) -%}
-            <div class="c-taskitem c-taskitem--nohover">
-              <div class="c-taskitem--left"></div>
-              <div class="c-taskitem--right"></div>
-            </div> {%- endfor %}
-
-          </div>
+          {% include "./shared/list-body.html" %}
 
         </div>
       </div>
 
     </div>
+
     <div class="o-flex--section">
-      <div class="c-form">
-        <div class="c-form__overflow">
 
-          <div class="c-form__editable">
-            <div class="c-forminput">
-              <div class="c-forminput__project">
-                <input class="c-forminput__text" type="text" placeholder="Add to a Project" onblur="this.value=''" />
-                <button class="u-button-reset c-icon">Add to a Project</button>
-              </div>
+      <div class="o-card">
+        <div class="o-card__body">
 
-              <div class="c-forminput__task">
-                <button class="u-button-reset c-icon">{{sprite("checkmark2")}}</button>
-                <input class="c-forminput__text" type="text" placeholder="Write a task name" />
-              </div>
+          {% include "./shared/editable.html" %}
 
-              <div class="c-forminput__desc">
-                <button class="u-button-reset c-icon--static">{{sprite("text")}}</button>
-                <textarea class="c-forminput__text" type="text" placeholder="Description" onfocus="this.placeholder=''" onblur="this.placeholder='Description'"></textarea>
-              </div>
-            </div>
-          </div>
+          <!-- -->
 
-          <div class="c-form__info">
-            <div class="c-detail">
-              <div class="c-detail__time">
+          {% include "./shared/info.html" %}
 
-                <p class="c-detail__text">Task created.
-                  <b>10:24</b>
-                </p>
-
-                <p class="c-detail__text">Assigned to you.
-                  <b>10:24</b>
-                </p>
-
-              </div>
-
-              <div class="c-detail__comment">
-                <div class="c-comment">
-                  <div class="c-comment__header">
-                    <div class="c-avatar">
-                    </div>
-                  </div>
-
-                  <div class="c-comment__body">
-                    <div class="c-comment--user">
-                      <p class="c-comment--text">
-                        Xavier Ang
-                        <span class="c-comment--text_weak">Today at 16:19</span>
-                      </p>
-                      <button class="u-button-reset  c-icon">{{sprite("cross")}}</button>
-                    </div>
-                    <div class="c-comment--content">
-                      <p class="c-comment--text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-
-                <!-- dummy block -->
-                <div class="c-comment">
-                  <div class="c-comment__header">
-                    <div class="c-avatar">
-                    </div>
-                  </div>
-
-                  <div class="c-comment__body">
-                    <div class="c-comment--user">
-                      <p class="c-comment--text">
-                        Xavier Ang
-                        <span class="c-comment--text_weak">Today at 16:19</span>
-                      </p>
-                      <button class="u-button-reset  c-icon">{{sprite("cross")}}</button>
-                    </div>
-                    <div class="c-comment--content">
-                      <p class="c-comment--text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div>
-          </div>
         </div>
+        <div class="o-card__footer">
 
-        <div class="c-form__comment">
-          <form class="c-formcomment">
+          {% include "./shared/comment.html" %}
 
-            <div class="c-formcomment__header">
-              <div class="c-avatar"></div>
-            </div>
-
-            <div class="c-formcomment__body">
-
-              <textarea class="c-formcomment__body-top c-formcomment__text" type="text" placeholder="Write a comment..." onfocus="this.placeholder = ''"
-                onblur="this.placeholder='Write a comment...'"></textarea>
-
-              <div class="c-formcomment__body-btm">
-                <button type="submit" class="c-formcomment__btn">Comment</button>
-              </div>
-
-            </div>
-
-
-          </form>
         </div>
-
       </div>
+
     </div>
   </div>
 </div> {% endblock %}

@@ -27,18 +27,14 @@
   justify-content: flex-end;
 }
 
-.c-formcomment__text {
+.c-formcomment__body-top {
   vertical-align: top;
   position: relative;
-  cursor: text;
-  outline: none;
   overflow: hidden;
-  resize: none;
   padding: 10px;
-  font-size: $global-font-size;
   height: 34px;
   width: 100%;
-  border: 0;
+  border: none;
   transition: height 0.5s;
   &:focus {
     height: calc(22px + (5 * #{$global-font-size}));
@@ -47,24 +43,5 @@
       border-color: $geyser;
       margin-top: 0;
     }
-  }
-}
-
-.c-formcomment__btn {
-  cursor: pointer;
-  border: 0;
-  box-shadow: none;
-  background-color: $dodger-blue;
-  border: 1px solid transparent;
-  border-radius: $global-radius;
-  color: $white;
-  font-size: $global-font-size;
-  padding: 10px;
-  height: 35px;
-  width: auto;
-  margin: 10px;
-  &:hover {
-    box-shadow: 0 0 0 3px $dodger-blue;
-    border-color: $white;
   }
 }

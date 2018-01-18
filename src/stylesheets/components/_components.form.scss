@@ -1,21 +1,4 @@
-.c-form {
-  flex: 1 1 50%;
-  margin: $inuit-global-spacing-unit;
-  border-radius: $global-radius $global-radius 0 0;
-  box-shadow: $global-box-shadow;
-  background-color: $white;
-  display: flex;
-  flex-direction: column;
-}
-
-.c-form__overflow {
-  flex: 1 1 1px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
 .c-form__comment {
-  flex: 0 0 auto;
   background-color: $porcelain;
   border-top: 1px solid $geyser;
   margin-top: auto;

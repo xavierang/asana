@@ -1,0 +1,11 @@
+@keyframes fade-in-then-out {
+  0% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 1px $dodger-blue;
+  }
+  100% {
+    box-shadow: 0 0 0 1px transparent;
+  }
+}
