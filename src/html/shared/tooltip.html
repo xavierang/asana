@@ -1,0 +1,33 @@
+<div class="c-tooltip">
+
+    <div class="c-tooltip__header">
+        <p class="c-text  c-text--faded">VIEW</p>
+        <button class="u-button-reset  c-icon  c-icon--right  c-icon--hover">{{sprite("cross")}}</button>
+    </div>
+
+    <div class="c-tooltip__radio">
+        <label class="c-text">
+            <input type="radio" name="status" value="incomplete" checked> Incomplete Task
+        </label>
+
+        <label class="c-text">
+            <input type="radio" name="status" value="completed"> Completed Task
+        </label>
+
+        <label class="c-text">
+            <input type="radio" name="status" value="all"> All Task
+        </label>
+    </div>
+
+    <div class="c-tooltip__dropdown">
+        <p class="c-text  c-text--faded">SORT</p>
+        <select class="c-tooltip__select  c-btn  c-btn--border" name="sort-by">
+            <option value="" selected>None</option>
+            <option value="project">Project</option>
+            <option value="due-date">Due Date</option>
+            <option value="likes">Likes</option>
+        </select>
+        <button class="u-button-reset c-icon">{{sprite("chevron-thin-down")}}</button>
+    </div>
+
+</div>

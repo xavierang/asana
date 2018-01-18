@@ -1,5 +1,4 @@
 .c-icon {
-  //all icon should have this style
   font: inherit;
   font-size: $global-font-size;
   cursor: pointer;
@@ -19,11 +18,24 @@
   }
 }
 
+//larger icons
+.c-icon--big {
+  .sprite {
+    height: 25px;
+    display: block;
+    svg {
+      height: 25px;
+    }
+  }
+}
+
+//icon that is styled as text
 .c-icon--text {
   text-decoration: underline dotted;
   border: 1px solid transparent;
 }
 
+//enable icon hover styles
 .c-icon--hover {
   &:hover {
     fill: $dodger-blue;
@@ -31,6 +43,7 @@
   }
 }
 
+//icons that are within a div that needs to be flex right
 .c-icon--right {
   margin: 0 0 0 auto;
   &:focus + .c-tooltip,
@@ -39,15 +52,18 @@
   }
 }
 
+//icon that are by default, hidden until hovered
 .c-icon--hidden {
   opacity: 0;
 }
 
-.c-icon--static {
+//icon that is not default colors
+.c-icon--faded {
   cursor: auto;
   fill: $submarine;
 }
 
+//icon that needs to be filled differently
 .c-icon--aquamarine {
   &:hover {
     fill: $aquamarine;

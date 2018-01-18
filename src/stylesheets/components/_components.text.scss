@@ -3,29 +3,33 @@
   height: $global-font-size;
   color: $black;
   border-radius: $global-radius;
-
+  margin: 0;
   outline: none;
   resize: none;
   cursor: text;
 }
 
+//small text
 .c-text--small {
   font-size: $global-font-size-small;
 }
+
+//larger text
 .c-text--large {
   font-size: $global-font-size-large;
 }
 
+//faded text
 .c-text--faded {
   color: $regent-gray;
 }
 
+//text with focused animation
 .c-text--animation {
   border: 1px solid transparent;
   overflow: hidden;
   height: auto;
   width: 100%;
-  margin: 0;
   padding: 5px;
   &:hover {
     border: 1px solid $geyser;
@@ -37,10 +41,10 @@
   }
 }
 
+//basic textarea
 .c-text--textarea {
   border: none;
   overflow: hidden;
-  margin: 0;
   padding: 0;
   align-self: center;
 }

@@ -8,6 +8,7 @@
   outline: none;
 }
 
+//buttons with outline border
 .c-btn--border {
   border: 1px solid $dodger-blue;
   border-radius: $global-radius;
@@ -23,6 +24,7 @@
   }
 }
 
+//buttons that has filled background
 .c-btn--filled {
   box-shadow: none;
   background-color: $dodger-blue;
@@ -38,6 +40,7 @@
   }
 }
 
+//buttons that are hidden by default until activated
 .c-btn--hidden {
   margin-left: 10px;
   opacity: 0;
