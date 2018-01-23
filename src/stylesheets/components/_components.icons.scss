@@ -47,10 +47,10 @@
 //icons that are within a div that needs to be flex right
 .c-icon--right {
   margin: 0 0 0 auto;
-  &:focus + .c-tooltip,
-  &:active + .c-tooltip {
-    display: block;
-  }
+  // &:focus + .c-tooltip,
+  // &:active + .c-tooltip {
+  //   display: block;
+  // }
 }
 
 //icon that are by default, hidden until hovered

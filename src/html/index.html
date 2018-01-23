@@ -1,43 +1,5 @@
 {# Nunjucks Templating! Homepage: https://mozilla.github.io/nunjucks/ Docs: https://mozilla.github.io/nunjucks/api.html #}
 {% extends 'layouts/application.html' %} {% block content %}
-<div class="c-app">
-  <div class="o-flex">
-    <div class="o-flex--section">
+<div id="main">
 
-      <section class="o-card">
-        <header class="o-card__header">
-
-          {% include "./shared/list-header.html" %}
-
-        </header>
-        <div class="o-card__body">
-
-          {% include "./shared/list-body.html" %}
-
-        </div>
-      </section>
-
-    </div>
-
-    <div class="o-flex--section">
-
-      <section class="o-card">
-        <div class="o-card__body">
-
-          {% include "./shared/editable.html" %}
-
-          <!-- -->
-
-          {% include "./shared/info.html" %}
-
-        </div>
-        <footer class="o-card__footer">
-
-          {% include "./shared/comment.html" %}
-
-        </footer>
-      </section>
-
-    </div>
-  </div>
 </div> {% endblock %}
