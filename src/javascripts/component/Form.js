@@ -9,24 +9,25 @@ class Form extends React.Component {
   }
   toggleInput(e) {
     const target = e.target;
+    console.log(target);
 
     if (target.localName === "button") {
       //button is the target
       if (target.classList.contains("u-hidden-visually")) {
         target.classList.remove("u-hidden-visually");
-        target.previousElementSibling.classList.add("c-text--invisible");
+        target.previousElementSibling.classList.add("u-hidden-visually");
       } else {
         target.classList.add("u-hidden-visually");
         target.previousElementSibling.focus();
-        target.previousElementSibling.classList.remove("c-text--invisible");
+        target.previousElementSibling.classList.remove("u-hidden-visually");
       }
     } else {
       //input is the target
-      if (target.classList.contains("c-text--invisible")) {
-        target.classList.remove("c-text--invisible");
+      if (target.classList.contains("u-hidden-visually")) {
+        target.classList.remove("u-hidden-visually");
         target.nextElementSibling.classList.add("u-hidden-visually");
       } else {
-        target.classList.add("c-text--invisible");
+        target.classList.add("u-hidden-visually");
         target.nextElementSibling.classList.remove("u-hidden-visually");
       }
     }
@@ -41,7 +42,7 @@ class Form extends React.Component {
               Project Name
             </label>
             <input
-              className="c-text c-text--animation c-text--invisible"
+              className="c-text c-text--animation u-hidden-visually"
               type="text"
               placeholder=""
               onFocus={e => (e.target.placeholder = "Add to Project")}
