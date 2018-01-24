@@ -5,14 +5,17 @@ const todos = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          project: action.project,
           task: action.task,
-          description: action.description,
-          created: action.created,
-          comments: {}, //when creating task, no comments yet
-          completed: false //when creating task, completed is false by default
+          completed: false
         }
       ];
+    case "TOGGLE_TODO":
+      return state.map((todo, index) => {
+        if (index === action.id) {
+          return Object.assign({}, todo, { completed: !todo.completed });
+        }
+        return todo;
+      });
     default:
       return state;
   }

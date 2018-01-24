@@ -1,6 +1,6 @@
 import React from "react";
 
-import { sprite } from "../helper";
+import CommentList from "./CommentList";
 
 class Info extends React.Component {
   render() {
@@ -19,33 +19,7 @@ class Info extends React.Component {
             </p>
           </div>
 
-          <div className="c-detail__comment">
-            <div className="c-comment">
-              <div className="c-comment__header">
-                <div className="c-avatar" />
-              </div>
-
-              <div className="c-comment__body">
-                <div className="c-comment--user">
-                  <p className="c-text">
-                    Xavier Ang
-                    <span className="c-text  c-text--faded">
-                      Today at 16:19
-                    </span>
-                  </p>
-                  <button className="u-button-reset  c-icon  c-icon--hover  c-icon--hidden">
-                    {sprite("cross")}
-                  </button>
-                </div>
-                <div className="c-comment--content">
-                  <p className="c-text">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CommentList />
         </div>
       </div>
     );

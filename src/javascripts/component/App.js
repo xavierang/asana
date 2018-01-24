@@ -4,7 +4,7 @@ import Header from "./Header";
 import Tasklist from "./Tasklist";
 import Form from "./Form";
 import Info from "./Info";
-import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 class App extends React.Component {
   render() {
@@ -28,7 +28,7 @@ class App extends React.Component {
               <Info />
             </div>
             <footer className="o-card__footer">
-              <Comment />
+              <CommentForm />
             </footer>
           </section>
         </div>

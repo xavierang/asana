@@ -2,13 +2,22 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import todoApp from "./reducers/todoApp";
+import { createStore, combineReducers } from "redux";
+import todos from "./reducers/todos";
+import comments from "./reducers/comments";
 import "../../node_modules/svgxuse/svgxuse";
 
 import App from "./component/App";
 
-let store = createStore(todoApp);
+const todoApp = combineReducers({
+  todos,
+  comments
+});
+
+let store = createStore(
+  todoApp /* preloadedState,*/,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 render(
   <Provider store={store}>

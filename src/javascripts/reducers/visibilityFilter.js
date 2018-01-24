@@ -8,13 +8,3 @@ const visibilityFilter = (state = "SHOW_ALL", action) => {
 };
 
 export default visibilityFilter;
-
-// describe("visibility filter reducer", () => {
-//   it("test 1", () => {
-//     expect(visibilityFilter(undefined, {})).toEqual([
-//       {
-//         filter: "SHOW_ALL"
-//       }
-//     ]);
-//   });
-// });
