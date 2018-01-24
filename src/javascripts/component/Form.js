@@ -1,5 +1,7 @@
 import React from "react";
 
+import TaskForm from "./TaskForm";
+
 import { sprite } from "../helper";
 
 class Form extends React.Component {
@@ -60,19 +62,7 @@ class Form extends React.Component {
             </button>
           </div>
 
-          <div className="c-forminput__task">
-            <button className="u-button-reset  c-icon  c-icon--big  c-icon--aquamarine">
-              {sprite("checkmark2")}
-            </button>
-            <label htmlFor="description" className="u-hidden-visually">
-              Task Name
-            </label>
-            <input
-              className="c-text c-text--large  c-text--animation"
-              type="text"
-              placeholder="Write a task name"
-            />
-          </div>
+          <TaskForm />
 
           <div className="c-forminput__desc">
             <button className="u-button-reset  c-icon  c-icon--faded">
