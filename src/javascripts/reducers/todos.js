@@ -6,13 +6,31 @@ const todos = (state = [], action) => {
         {
           id: action.id,
           task: "",
-          completed: false
+          description: "",
+          created: action.created,
+          completed: false,
+          comments: []
         }
       ];
-    case "UPDATE_TODO":
+
+    case "DELETE_TODO":
+      const todo = state.filter(t => t.id !== action.id);
+      return [...todo];
+
+    case "UPDATE_TASK_TODO":
       return state.map(todo => {
         if (todo.id === action.id) {
-          return Object.assign({}, todo, { task: todo.task + action.char });
+          return Object.assign({}, todo, { task: action.text });
+        }
+        return todo;
+      });
+
+    case "UPDATE_DESC_TODO":
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          return Object.assign({}, todo, {
+            description: action.text
+          });
         }
         return todo;
       });
@@ -24,6 +42,7 @@ const todos = (state = [], action) => {
         }
         return todo;
       });
+
     default:
       return state;
   }

@@ -5,13 +5,17 @@ const comments = (state = [], action) => {
         ...state,
         {
           id: action.id,
+          taskid: action.taskid,
           text: action.text,
+          created: action.created,
           likes: 0
         }
       ];
+
     case "DELETE_COMMENT":
       const comment = state.filter(c => c.id !== action.id);
       return [...comment];
+
     case "LIKE_COMMENT":
       return state.map(c => {
         if (c.id === action.id) {
@@ -19,6 +23,7 @@ const comments = (state = [], action) => {
         }
         return c;
       });
+
     default:
       return state;
   }

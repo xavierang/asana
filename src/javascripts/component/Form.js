@@ -1,17 +1,14 @@
 import React from "react";
 
-import TaskForm from "./TaskForm";
-
 import { sprite } from "../helper";
 
-class Form extends React.Component {
-  constructor() {
-    super();
-    this.toggleInput = this.toggleInput.bind(this);
-  }
-  toggleInput(e) {
+const Form = ({
+  selectedtask = { task: "", description: "" },
+  onTaskChange,
+  onDescChange
+}) => {
+  const toggleInput = e => {
     const target = e.target;
-    console.log(target);
 
     if (target.localName === "button") {
       //button is the target
@@ -33,10 +30,10 @@ class Form extends React.Component {
         target.nextElementSibling.classList.remove("u-hidden-visually");
       }
     }
-  }
+  };
 
-  render() {
-    return (
+  return (
+    <div className="o-card__header">
       <div className="c-form__editable">
         <div className="c-forminput">
           <div className="c-forminput__project">
@@ -51,18 +48,34 @@ class Form extends React.Component {
               onBlur={e => {
                 e.target.placeholder = "";
                 e.target.value = "";
-                this.toggleInput(e);
+                toggleInput(e);
               }}
             />
             <button
               className="u-button-reset  c-icon  c-icon--hover  c-icon--text"
-              onClick={e => this.toggleInput(e)}
+              onClick={e => toggleInput(e)}
             >
               Add to a Project
             </button>
           </div>
 
-          <TaskForm />
+          <div className="c-forminput__task">
+            <button className="u-button-reset  c-icon  c-icon--big  c-icon--aquamarine">
+              {sprite("checkmark2")}
+            </button>
+            <label htmlFor="description" className="u-hidden-visually">
+              Task Name
+            </label>
+            <input
+              className="c-text c-text--large  c-text--animation"
+              type="text"
+              placeholder="Write a task name"
+              value={selectedtask.task}
+              onChange={e => {
+                onTaskChange(selectedtask.id, e.target.value);
+              }}
+            />
+          </div>
 
           <div className="c-forminput__desc">
             <button className="u-button-reset  c-icon  c-icon--faded">
@@ -75,14 +88,18 @@ class Form extends React.Component {
               className="c-text c-text  c-text--faded  c-text--animation"
               type="text"
               placeholder="Description"
+              value={selectedtask.description}
               onFocus={e => (e.target.placeholder = "")}
               onBlur={e => (e.target.placeholder = "Description")}
+              onChange={e => {
+                onDescChange(selectedtask.id, e.target.value);
+              }}
             />
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Form;

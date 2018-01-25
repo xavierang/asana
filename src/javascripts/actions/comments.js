@@ -1,11 +1,13 @@
 let nextCommentId = 0;
 
 //returns an object for addComment actions
-export const addComment = text => {
+export const addComment = (taskid, text, time) => {
   return {
     type: "ADD_COMMENT",
     id: nextCommentId++,
-    text: text
+    taskid: taskid,
+    text: text,
+    created: time
   };
 };
 

@@ -3,24 +3,30 @@ import { connect } from "react-redux";
 import { delComment } from "../actions/comments";
 import Comment from "./Comment";
 
-const CommentList = ({ comments, onCommentDeleteClick }) => {
+const CommentList = ({ comments, activeId, onCommentDeleteClick }) => {
   return (
     <ul className="c-detail__comment">
-      {comments.map(comment => (
-        <Comment
-          key={comment.id}
-          id={comment.id}
-          text={comment.text}
-          onCommentDeleteClick={onCommentDeleteClick}
-        />
-      ))}
+      {comments.map(comment => {
+        if (comment.taskid === activeId) {
+          return (
+            <Comment
+              key={comment.id}
+              id={comment.id}
+              text={comment.text}
+              created={comment.created}
+              onCommentDeleteClick={onCommentDeleteClick}
+            />
+          );
+        }
+      })}
     </ul>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    comments: state.comments
+    comments: state.comments,
+    activeId: state.activeTask
   };
 };
 

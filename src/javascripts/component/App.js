@@ -1,40 +1,59 @@
 import React from "react";
+import { connect } from "react-redux";
 
+//import actions
+import { updateTaskTodos, updateDescTodos } from "../actions/todos";
+
+//import components needed to render
 import Header from "./Header";
 import Tasklist from "./Tasklist";
 import Form from "./Form";
 import Info from "./Info";
 import CommentForm from "./CommentForm";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="o-flex">
-        <div className="o-flex--section">
-          <section className="o-card">
-            <header className="o-card__header">
-              <Header />
-            </header>
-            <div className="o-card__body">
-              <Tasklist />
-            </div>
-          </section>
-        </div>
-
-        <div className="o-flex--section">
-          <section className="o-card">
-            <div className="o-card__body">
-              <Form />
-              <Info />
-            </div>
-            <footer className="o-card__footer">
-              <CommentForm />
-            </footer>
-          </section>
-        </div>
+const App = ({ todos, activeId, onTaskChange, onDescChange }) => {
+  return (
+    <div className="o-flex">
+      <div className="o-flex--section">
+        <section className="o-card">
+          <Header />
+          <Tasklist />
+        </section>
       </div>
-    );
-  }
-}
 
-export default App;
+      <div className="o-flex--section">
+        <section className="o-card">
+          <Form
+            selectedtask={todos.find(todo => todo.id === activeId)}
+            onTaskChange={onTaskChange}
+            onDescChange={onDescChange}
+          />
+          <Info selectedtask={todos.find(todo => todo.id === activeId)} />
+          <CommentForm
+            selectedtask={todos.find(todo => todo.id === activeId)}
+          />
+        </section>
+      </div>
+    </div>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todos,
+    activeId: state.activeTask
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTaskChange: (id, text) => {
+      dispatch(updateTaskTodos(id, text));
+    },
+    onDescChange: (id, text) => {
+      dispatch(updateDescTodos(id, text));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
