@@ -3,3 +3,11 @@
   border-top: 1px solid $geyser;
   margin-top: auto;
 }
+
+.c-form__header {
+  display: flex;
+  padding: 10px;
+  border-radius: $global-radius $global-radius 0 0;
+  box-shadow: $global-box-shadow;
+  height: 51px;
+}

@@ -2,28 +2,33 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Task from "./Task";
-import { delTodos, activeTodos, updateTaskTodos } from "../actions/todos";
+import {
+  delTodos,
+  activeTodos,
+  updateTaskTodos,
+  toggleTodos
+} from "../actions/todos";
 import { sprite } from "../helper";
 
 const TaskList = ({
   todos,
-  activeId,
+  visibilityFilter,
   onBackSpace,
   onFocusSetActive,
-  onKeyUp
+  onKeyUp,
+  onCheckMark
 }) => (
   <div className="o-card__body">
     <div className="c-list__body">
       <ul className="o-list-bare">
-        {todos.map(todo => (
+        {visibleTask(todos, visibilityFilter).map(todo => (
           <Task
             key={todo.id}
-            id={todo.id}
-            task={todo.task}
-            activeId={activeId}
+            todo={todo}
             onBackSpace={onBackSpace}
             onFocusSetActive={onFocusSetActive}
             onKeyUp={onKeyUp}
+            onCheckMark={onCheckMark}
           />
         ))}
 
@@ -37,10 +42,20 @@ const TaskList = ({
   </div>
 );
 
+const visibleTask = (todos, visibilityFilter) => {
+  if (visibilityFilter === "SHOW_ALL") {
+    return todos;
+  } else if (visibilityFilter === "SHOW_COMPLETED") {
+    return todos.filter(todo => todo.completed);
+  } else {
+    return todos.filter(todo => !todo.completed);
+  }
+};
+
 const mapStateToProps = state => {
   return {
     todos: state.todos,
-    activeId: state.activeTask
+    visibilityFilter: state.visibilityFilter
   };
 };
 
@@ -54,6 +69,9 @@ const mapDispatchToProps = dispatch => {
     },
     onKeyUp: (id, text) => {
       dispatch(updateTaskTodos(id, text));
+    },
+    onCheckMark: (id, donetime) => {
+      dispatch(toggleTodos(id, donetime));
     }
   };
 };

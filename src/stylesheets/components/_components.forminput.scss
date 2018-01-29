@@ -33,7 +33,7 @@
   align-items: flex-start;
   position: relative;
   .c-text--animation {
-    height: 75px;
+    min-height: 24px;
     margin-left: 4px;
   }
   &:after {

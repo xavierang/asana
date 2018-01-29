@@ -3,11 +3,11 @@ import moment from "moment";
 import { connect } from "react-redux";
 
 import Tooltip from "./Tooltip";
-import { addTodos, activeTodos } from "../actions/todos";
+import { addTodos, activeTodos, setFilter } from "../actions/todos";
 
 import { sprite } from "../helper";
 
-let Header = ({ dispatch }) => {
+let Header = ({ visibilityFilter, onAddTaskBtn, onRadioChange }) => {
   const toggleTooltip = () => {
     const tooltip = document.getElementsByClassName("c-tooltip");
     const tooltipClasses = tooltip[0].classList;
@@ -45,7 +45,7 @@ let Header = ({ dispatch }) => {
           className="c-btn  c-btn--border"
           onClick={e => {
             e.preventDefault();
-            dispatch(addTodos(moment()));
+            onAddTaskBtn();
           }}
         >
           Add Task
@@ -60,12 +60,34 @@ let Header = ({ dispatch }) => {
           {sprite("equalizer")}
         </button>
 
-        <Tooltip toggleTooltip={toggleTooltip} />
+        <Tooltip
+          toggleTooltip={toggleTooltip}
+          onRadioChange={onRadioChange}
+          visibilityFilter={visibilityFilter}
+        />
       </div>
     </header>
   );
 };
 
-Header = connect()(Header);
+const mapStateToProps = state => {
+  return {
+    visibilityFilter: state.visibilityFilter
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddTaskBtn: () => {
+      dispatch(addTodos(moment()));
+    },
+
+    onRadioChange: filter => {
+      dispatch(setFilter(filter));
+    }
+  };
+};
+
+Header = connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export default Header;

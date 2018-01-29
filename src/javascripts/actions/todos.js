@@ -37,3 +37,18 @@ export const activeTodos = id => {
     id: id
   };
 };
+
+export const setFilter = filter => {
+  return {
+    type: "SET_VISIBILITY_FILTER",
+    filter: filter
+  };
+};
+
+export const toggleTodos = (id, donetime) => {
+  return {
+    type: "TOGGLE_TODO",
+    id: id,
+    donetime: donetime
+  };
+};

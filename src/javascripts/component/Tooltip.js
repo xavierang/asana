@@ -21,19 +21,42 @@ class Tooltip extends React.Component {
             <input
               type="radio"
               name="status"
-              value="incomplete"
-              defaultChecked
+              value="SHOW_INCOMPLETE"
+              checked={this.props.visibilityFilter === "SHOW_INCOMPLETE"}
+              onChange={e => {
+                //dispatch action
+                this.props.onRadioChange(e.target.value);
+              }}
             />{" "}
             Incomplete Task
           </label>
 
           <label className="c-text">
-            <input type="radio" name="status" value="completed" /> Completed
-            Task
+            <input
+              type="radio"
+              name="status"
+              value="SHOW_COMPLETED"
+              checked={this.props.visibilityFilter === "SHOW_COMPLETED"}
+              onChange={e => {
+                //dispatch action
+                this.props.onRadioChange(e.target.value);
+              }}
+            />{" "}
+            Completed Task
           </label>
 
           <label className="c-text">
-            <input type="radio" name="status" value="all" /> All Task
+            <input
+              type="radio"
+              name="status"
+              value="SHOW_ALL"
+              checked={this.props.visibilityFilter === "SHOW_ALL"}
+              onChange={e => {
+                //dispatch action
+                this.props.onRadioChange(e.target.value);
+              }}
+            />{" "}
+            All Task
           </label>
         </div>
 

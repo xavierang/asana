@@ -28,11 +28,11 @@
 }
 
 .c-formcomment__body-top {
+  min-height: 34px;
   vertical-align: top;
   position: relative;
   overflow: hidden;
   padding: 10px;
-  height: 34px;
   width: 100%;
   border: none;
   transition: height 0.5s;

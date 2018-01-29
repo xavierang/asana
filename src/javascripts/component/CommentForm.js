@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
+import Textarea from "react-expanding-textarea";
 import { addComment, likeComment } from "../actions/comments";
 
 let Comment = ({ selectedtask, dispatch }) => {
@@ -18,8 +19,8 @@ let Comment = ({ selectedtask, dispatch }) => {
             <label htmlFor="description" className="u-hidden-visually">
               Comment
             </label>
-            <textarea
-              className="c-formcomment__body-top c-text c-formcomment__text"
+            <Textarea
+              className="c-formcomment__body-top c-text"
               id="comment"
               type="text"
               placeholder="Write a comment..."
@@ -32,6 +33,7 @@ let Comment = ({ selectedtask, dispatch }) => {
                 className="c-btn c-btn--filled"
                 onClick={e => {
                   e.preventDefault();
+                  console.log(selectedtask.id);
                   const commentTextArea = document.getElementById("comment");
                   dispatch(
                     addComment(selectedtask.id, commentTextArea.value, moment())

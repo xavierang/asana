@@ -2,7 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 //import actions
-import { updateTaskTodos, updateDescTodos } from "../actions/todos";
+import {
+  updateTaskTodos,
+  updateDescTodos,
+  toggleTodos,
+  activeTodos
+} from "../actions/todos";
 
 //import components needed to render
 import Header from "./Header";
@@ -11,7 +16,16 @@ import Form from "./Form";
 import Info from "./Info";
 import CommentForm from "./CommentForm";
 
-const App = ({ todos, activeId, onTaskChange, onDescChange }) => {
+import { sprite } from "../helper";
+
+const App = ({
+  todos,
+  activeTask,
+  onTaskChange,
+  onDescChange,
+  onCheckMark,
+  onCloseForm
+}) => {
   return (
     <div className="o-flex">
       <div className="o-flex--section">
@@ -21,16 +35,20 @@ const App = ({ todos, activeId, onTaskChange, onDescChange }) => {
         </section>
       </div>
 
-      <div className="o-flex--section">
+      <div
+        className={`o-flex--section ${activeTask === "NONE" ? "u-hidden" : ""}`}
+      >
         <section className="o-card">
           <Form
-            selectedtask={todos.find(todo => todo.id === activeId)}
+            selectedtask={todos.find(todo => todo.id === activeTask)}
             onTaskChange={onTaskChange}
             onDescChange={onDescChange}
+            onCheckMark={onCheckMark}
+            onCloseForm={onCloseForm}
           />
-          <Info selectedtask={todos.find(todo => todo.id === activeId)} />
+          <Info selectedtask={todos.find(todo => todo.id === activeTask)} />
           <CommentForm
-            selectedtask={todos.find(todo => todo.id === activeId)}
+            selectedtask={todos.find(todo => todo.id === activeTask)}
           />
         </section>
       </div>
@@ -41,7 +59,7 @@ const App = ({ todos, activeId, onTaskChange, onDescChange }) => {
 const mapStateToProps = state => {
   return {
     todos: state.todos,
-    activeId: state.activeTask
+    activeTask: state.activeTask
   };
 };
 
@@ -52,6 +70,12 @@ const mapDispatchToProps = dispatch => {
     },
     onDescChange: (id, text) => {
       dispatch(updateDescTodos(id, text));
+    },
+    onCheckMark: (id, donetime) => {
+      dispatch(toggleTodos(id, donetime));
+    },
+    onCloseForm: () => {
+      dispatch(activeTodos("NONE"));
     }
   };
 };

@@ -9,6 +9,7 @@ const todos = (state = [], action) => {
           description: "",
           created: action.created,
           completed: false,
+          donetime: undefined,
           comments: []
         }
       ];
@@ -38,7 +39,10 @@ const todos = (state = [], action) => {
     case "TOGGLE_TODO":
       return state.map((todo, index) => {
         if (index === action.id) {
-          return Object.assign({}, todo, { completed: !todo.completed });
+          return Object.assign({}, todo, {
+            completed: !todo.completed,
+            donetime: action.donetime
+          });
         }
         return todo;
       });

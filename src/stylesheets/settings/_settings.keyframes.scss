@@ -9,3 +9,13 @@
     box-shadow: 0 0 0 1px transparent;
   }
 }
+
+@keyframes completed-gradient {
+  0% {
+    background-position: 101% bottom;
+  }
+
+  100% {
+    background-position: 0% bottom;
+  }
+}

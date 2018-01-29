@@ -1,4 +1,5 @@
 .c-text {
+  background: transparent;
   font-size: $global-font-size;
   height: $global-font-size;
   color: $black;
@@ -22,6 +23,10 @@
 //faded text
 .c-text--faded {
   color: $regent-gray;
+}
+
+.c-text--completed {
+  color: $aquamarine;
 }
 
 //text with focused animation

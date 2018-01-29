@@ -1,11 +1,18 @@
 import React from "react";
+import moment from "moment";
+import Textarea from "react-expanding-textarea";
+
+import FilledCheck from "./FilledCheck";
+import UnfilledCheck from "./UnfilledCheck";
 
 import { sprite } from "../helper";
 
 const Form = ({
   selectedtask = { task: "", description: "" },
   onTaskChange,
-  onDescChange
+  onDescChange,
+  onCheckMark,
+  onCloseForm
 }) => {
   const toggleInput = e => {
     const target = e.target;
@@ -34,6 +41,17 @@ const Form = ({
 
   return (
     <div className="o-card__header">
+      <div className="c-form__header">
+        <button
+          className="u-button-reset  c-icon  c-icon--hover  c-icon--right"
+          onClick={() => {
+            onCloseForm();
+          }}
+        >
+          {sprite("cross")}
+        </button>
+      </div>
+
       <div className="c-form__editable">
         <div className="c-forminput">
           <div className="c-forminput__project">
@@ -60,8 +78,15 @@ const Form = ({
           </div>
 
           <div className="c-forminput__task">
-            <button className="u-button-reset  c-icon  c-icon--big  c-icon--aquamarine">
-              {sprite("checkmark2")}
+            <button
+              className={`u-button-reset  c-icon  c-icon--big  c-icon--aquamarine ${
+                selectedtask.completed ? "c-icon--completed " : ""
+              }`}
+              onClick={e => {
+                onCheckMark(selectedtask.id, moment());
+              }}
+            >
+              {selectedtask.completed ? <FilledCheck /> : <UnfilledCheck />}
             </button>
             <label htmlFor="description" className="u-hidden-visually">
               Task Name
@@ -84,8 +109,8 @@ const Form = ({
             <label htmlFor="description" className="u-hidden-visually">
               Description
             </label>
-            <textarea
-              className="c-text c-text  c-text--faded  c-text--animation"
+            <Textarea
+              className="c-text  c-text--faded  c-text--animation"
               type="text"
               placeholder="Description"
               value={selectedtask.description}
@@ -94,6 +119,7 @@ const Form = ({
               onChange={e => {
                 onDescChange(selectedtask.id, e.target.value);
               }}
+              rows="1"
             />
           </div>
         </div>
