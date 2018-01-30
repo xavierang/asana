@@ -23,7 +23,6 @@ import { sprite } from "../helper";
 
 class App extends React.Component {
   componentWillMount() {
-    console.log("mounted");
     this.props.getComment();
     this.props.getTodos();
   }

@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import ReactTooltip from "react-tooltip";
 
 import CommentList from "./CommentList";
@@ -14,11 +15,17 @@ const Info = ({ selectedtask = {} }) => {
               <ReactTooltip />
               <p className="c-text  c-text--small  c-text--faded">
                 Xavier Ang created task.
-                <b data-tip={selectedtask.created}>{selectedtask.created}</b>
+                <b data-tip={moment(selectedtask.created).format("LLL")}>
+                  &nbsp;&nbsp;&nbsp;
+                  {moment(selectedtask.created).calendar()}
+                </b>
               </p>
               <p className="c-text  c-text--small  c-text--faded">
                 Xavier Ang assigned to you.
-                <b data-tip={selectedtask.created}>{selectedtask.created}</b>
+                <b data-tip={moment(selectedtask.created).format("LLL")}>
+                  &nbsp;&nbsp;&nbsp;
+                  {moment(selectedtask.created).calendar()}
+                </b>
               </p>
               {selectedtask.completed && (
                 <div className="o-layout--stretch  o-layout--large">
@@ -29,14 +36,18 @@ const Info = ({ selectedtask = {} }) => {
                     <b className="c-text--completed">
                       Xavier Ang completed this task
                     </b>{" "}
-                    {selectedtask.donetime}{" "}
+                    &nbsp;&nbsp;&nbsp;
+                    {moment(selectedtask.donetime).format("LLLL")}{" "}
                   </p>
                 </div>
               )}
               {!selectedtask.completed &&
                 selectedtask.donetime && (
                   <p className="c-text c-text--small c-text--faded">
-                    Xavier Ang marked incomplete.<b>{selectedtask.donetime}</b>
+                    Xavier Ang marked incomplete.<b>
+                      &nbsp;&nbsp;&nbsp;
+                      {moment(selectedtask.donetime).calendar()}
+                    </b>
                   </p>
                 )}
             </div>

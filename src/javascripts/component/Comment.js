@@ -15,12 +15,16 @@ const Comment = ({ id, text, created, onCommentDeleteClick }) => {
           <div className="c-comment--user">
             <p className="c-text">
               Xavier Ang
-              <span className="c-text  c-text--faded">{created}</span>
+              <span className="c-text  c-text--faded">
+                &nbsp;&nbsp;&nbsp;
+                {moment(created)
+                  .startOf("second")
+                  .fromNow()}
+              </span>
             </p>
             <button
               className="u-button-reset  c-icon  c-icon--hover  c-icon--hidden"
               onClick={() => {
-                console.log(id);
                 onCommentDeleteClick(id);
               }}
             >

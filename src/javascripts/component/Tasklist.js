@@ -31,12 +31,6 @@ const TaskList = ({
             onCheckMark={onCheckMark}
           />
         ))}
-
-        {/* {% for i in range(0,25) -%}
-      <li className="c-taskitem c-taskitem--nohover o-list-bare__item">
-          <div className="c-taskitem--left"></div>
-          <div className="c-taskitem--right"></div>
-      </li> {%- endfor %} */}
       </ul>
     </div>
   </div>
@@ -71,6 +65,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateTaskTodos(id, text));
     },
     onCheckMark: (id, donetime) => {
+      console.log(id, donetime);
       dispatch(toggleTodos(id, donetime));
     }
   };
