@@ -1,34 +1,59 @@
+import database from "../base";
+
 let nextTodosId = 0;
 
 export const addTodos = time => {
-  return {
-    type: "ADD_TODO",
-    id: nextTodosId++,
-    created: time
+  const newKey = database.ref("todos").push().key;
+  return dispatch => {
+    database.ref(`todos/${newKey}`).set({
+      id: newKey,
+      task: "",
+      description: "",
+      created: time.toLocaleString(),
+      completed: false
+    });
   };
+  // return {
+  //   type: "ADD_TODO",
+  //   id: nextTodosId++,
+  //   created: time
+  // };
 };
 
 export const delTodos = id => {
-  return {
-    type: "DELETE_TODO",
-    id: id
+  return dispatch => {
+    database.ref(`todos/${id}`).remove();
   };
+  // return {
+  //   type: "DELETE_TODO",
+  //   id: id
+  // };
 };
 
 export const updateTaskTodos = (id, text) => {
-  return {
-    type: "UPDATE_TASK_TODO",
-    id: id,
-    text: text
+  return dispatch => {
+    database.ref(`todos/${id}`).update({
+      task: text
+    });
   };
+  // return {
+  //   type: "UPDATE_TASK_TODO",
+  //   id: id,
+  //   text: text
+  // };
 };
 
 export const updateDescTodos = (id, text) => {
-  return {
-    type: "UPDATE_DESC_TODO",
-    id: id,
-    text: text
+  return dispatch => {
+    database.ref(`todos/${id}`).update({
+      description: text
+    });
   };
+  // return {
+  //   type: "UPDATE_DESC_TODO",
+  //   id: id,
+  //   text: text
+  // };
 };
 
 export const activeTodos = id => {
@@ -46,9 +71,35 @@ export const setFilter = filter => {
 };
 
 export const toggleTodos = (id, donetime) => {
-  return {
-    type: "TOGGLE_TODO",
-    id: id,
-    donetime: donetime
+  database
+    .ref(`todos/${id}`)
+    .once("value")
+    .then(snapshot => {
+      const status = snapshot.val().completed;
+    });
+
+  console.log(status);
+
+  return dispatch => {
+    database.ref(`todos/${id}`).update({
+      completed: !status,
+      donetime: donetime.toLocaleString()
+    });
   };
+  // return {
+  //   type: "TOGGLE_TODO",
+  //   id: id,
+  //   donetime: donetime
+  // };
 };
+
+export function getTodos() {
+  return dispatch => {
+    database.ref("todos").on("value", snapshot => {
+      dispatch({
+        type: "GET_TODO",
+        payload: snapshot.val()
+      });
+    });
+  };
+}

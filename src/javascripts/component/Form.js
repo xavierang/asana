@@ -119,7 +119,6 @@ const Form = ({
               onChange={e => {
                 onDescChange(selectedtask.id, e.target.value);
               }}
-              rows="1"
             />
           </div>
         </div>

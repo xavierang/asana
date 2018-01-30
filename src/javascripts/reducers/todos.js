@@ -46,6 +46,15 @@ const todos = (state = [], action) => {
         }
         return todo;
       });
+    case "GET_TODO":
+      if (action.payload === null) {
+        return [];
+      } else {
+        const temp = Object.keys(action.payload).map(
+          key => action.payload[key]
+        );
+        return [...temp];
+      }
 
     default:
       return state;

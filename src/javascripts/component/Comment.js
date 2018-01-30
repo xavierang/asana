@@ -4,7 +4,7 @@ import moment from "moment";
 import { sprite } from "../helper";
 
 const Comment = ({ id, text, created, onCommentDeleteClick }) => {
-  if (!isNaN(created)) {
+  if (created) {
     return (
       <li className="c-comment">
         <div className="c-comment__header">
@@ -15,13 +15,14 @@ const Comment = ({ id, text, created, onCommentDeleteClick }) => {
           <div className="c-comment--user">
             <p className="c-text">
               Xavier Ang
-              <span className="c-text  c-text--faded">
-                {created.calendar()}
-              </span>
+              <span className="c-text  c-text--faded">{created}</span>
             </p>
             <button
               className="u-button-reset  c-icon  c-icon--hover  c-icon--hidden"
-              onClick={() => onCommentDeleteClick(id)}
+              onClick={() => {
+                console.log(id);
+                onCommentDeleteClick(id);
+              }}
             >
               {sprite("cross")}
             </button>
@@ -32,6 +33,8 @@ const Comment = ({ id, text, created, onCommentDeleteClick }) => {
         </div>
       </li>
     );
+  } else {
+    return;
   }
 };
 

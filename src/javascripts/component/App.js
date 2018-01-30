@@ -9,6 +9,9 @@ import {
   activeTodos
 } from "../actions/todos";
 
+import { getComment } from "../actions/comments";
+import { getTodos } from "../actions/todos";
+
 //import components needed to render
 import Header from "./Header";
 import Tasklist from "./Tasklist";
@@ -18,43 +21,55 @@ import CommentForm from "./CommentForm";
 
 import { sprite } from "../helper";
 
-const App = ({
-  todos,
-  activeTask,
-  onTaskChange,
-  onDescChange,
-  onCheckMark,
-  onCloseForm
-}) => {
-  return (
-    <div className="o-flex">
-      <div className="o-flex--section">
-        <section className="o-card">
-          <Header />
-          <Tasklist />
-        </section>
-      </div>
+class App extends React.Component {
+  componentWillMount() {
+    console.log("mounted");
+    this.props.getComment();
+    this.props.getTodos();
+  }
 
-      <div
-        className={`o-flex--section ${activeTask === "NONE" ? "u-hidden" : ""}`}
-      >
-        <section className="o-card">
-          <Form
-            selectedtask={todos.find(todo => todo.id === activeTask)}
-            onTaskChange={onTaskChange}
-            onDescChange={onDescChange}
-            onCheckMark={onCheckMark}
-            onCloseForm={onCloseForm}
-          />
-          <Info selectedtask={todos.find(todo => todo.id === activeTask)} />
-          <CommentForm
-            selectedtask={todos.find(todo => todo.id === activeTask)}
-          />
-        </section>
+  render() {
+    const {
+      todos,
+      activeTask,
+      onTaskChange,
+      onDescChange,
+      onCheckMark,
+      onCloseForm
+    } = this.props;
+
+    return (
+      <div className="o-flex">
+        <div className="o-flex--section">
+          <section className="o-card">
+            <Header />
+            <Tasklist />
+          </section>
+        </div>
+
+        <div
+          className={`o-flex--section ${
+            activeTask === "NONE" ? "u-hidden" : ""
+          }`}
+        >
+          <section className="o-card">
+            <Form
+              selectedtask={todos.find(todo => todo.id === activeTask)}
+              onTaskChange={onTaskChange}
+              onDescChange={onDescChange}
+              onCheckMark={onCheckMark}
+              onCloseForm={onCloseForm}
+            />
+            <Info selectedtask={todos.find(todo => todo.id === activeTask)} />
+            <CommentForm
+              selectedtask={todos.find(todo => todo.id === activeTask)}
+            />
+          </section>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -76,6 +91,12 @@ const mapDispatchToProps = dispatch => {
     },
     onCloseForm: () => {
       dispatch(activeTodos("NONE"));
+    },
+    getComment: () => {
+      dispatch(getComment());
+    },
+    getTodos: () => {
+      dispatch(getTodos());
     }
   };
 };

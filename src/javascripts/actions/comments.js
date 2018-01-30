@@ -1,19 +1,33 @@
+import database from "../base";
+
 let nextCommentId = 0;
 
 //returns an object for addComment actions
-export const addComment = (taskid, text, time) => {
-  return {
-    type: "ADD_COMMENT",
-    id: nextCommentId++,
-    taskid: taskid,
-    text: text,
-    created: time
+export function addComment(taskid, text, time) {
+  const newKey = database.ref("comments").push().key;
+  return dispatch => {
+    database.ref(`comments/${newKey}`).set({
+      id: newKey,
+      taskid,
+      text,
+      created: time.toLocaleString()
+    });
+  };
+}
+
+export const delComment = id => {
+  return dispatch => {
+    database.ref(`/comments/${id}`).remove();
   };
 };
 
-export const delComment = id => {
-  return {
-    type: "DELETE_COMMENT",
-    id: id
+export function getComment() {
+  return dispatch => {
+    database.ref("comments").on("value", snapshot => {
+      dispatch({
+        type: "GET_COMMENT",
+        payload: snapshot.val()
+      });
+    });
   };
-};
+}

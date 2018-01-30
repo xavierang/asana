@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 import Textarea from "react-expanding-textarea";
-import { addComment, likeComment } from "../actions/comments";
+import { addComment } from "../actions/comments";
 
 let Comment = ({ selectedtask, dispatch }) => {
   let input;
@@ -33,7 +33,6 @@ let Comment = ({ selectedtask, dispatch }) => {
                 className="c-btn c-btn--filled"
                 onClick={e => {
                   e.preventDefault();
-                  console.log(selectedtask.id);
                   const commentTextArea = document.getElementById("comment");
                   dispatch(
                     addComment(selectedtask.id, commentTextArea.value, moment())

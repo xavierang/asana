@@ -1,10 +1,10 @@
 // import "./modules";
 import React from "react";
 import thunk from "redux-thunk";
-import createLogger from "redux-logger";
+import { createLogger } from "redux-logger";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 
 //import reducers
 import todos from "./reducers/todos";
@@ -23,6 +23,8 @@ const rootReducer = combineReducers({
   activeTask,
   visibilityFilter
 });
+
+const logger = createLogger();
 
 let store = createStore(
   rootReducer /* preloadedState,*/,
