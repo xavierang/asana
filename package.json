@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "blendid": "^4.3.1",
+    "eventsource-polyfill": "^0.9.6",
     "firebase": "^4.9.0",
     "inuitcss": "^6.0.0-beta.5",
     "moment": "^2.20.1",

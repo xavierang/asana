@@ -1,8 +1,5 @@
 import database from "../base";
 
-let nextCommentId = 0;
-
-//returns an object for addComment actions
 export function addComment(taskid, text, time) {
   const newKey = database.ref("comments").push().key;
   return dispatch => {

@@ -1,9 +1,6 @@
 import database from "../base";
 
-let nextTodosId = 0;
-
 export function addTodos(time) {
-  debugger;
   return dispatch => {
     const newKey = database.ref("todos").push().key;
     database.ref(`todos/${newKey}`).set({

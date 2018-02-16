@@ -1,3 +1,5 @@
+import "eventsource-polyfill";
+
 // import "./modules";
 import React from "react";
 import thunk from "redux-thunk";
@@ -24,12 +26,12 @@ const rootReducer = combineReducers({
   visibilityFilter
 });
 
-const logger = createLogger();
+// const logger = createLogger();
 
 let store = createStore(
   rootReducer /* preloadedState,*/,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk, logger)
+  applyMiddleware(thunk)
 );
 
 render(
