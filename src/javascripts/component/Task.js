@@ -20,28 +20,29 @@ class Task extends React.Component {
     } = this.props;
     return (
       <li
-        className={`c-taskitem o-list-bare__item" ${
-          todo.completed ? "c-taskitem--completed" : ""
+        className={`c-taskitem  o-list-bare__item" ${
+          todo.completed ? "is--completed" : ""
         }`}
         ref={li => {
           this.listitem = li;
         }}
       >
         <div className="c-taskitem--left">
-          <button className="u-button-reset c-icon c-icon--hover  c-icon--hidden">
+          <button className="c-icon  c-icon--small  c-icon--blue  c-icon--hidden">
             {sprite("grid")}
           </button>
         </div>
+
         <div className="c-taskitem--right">
           <button
-            className={`u-button-reset c-icon c-icon--aquamarine ${
-              todo.completed ? "c-icon--completed" : ""
+            className={`c-icon  c-icon--small  c-icon--aquamarine ${
+              todo.completed ? "is--completed" : ""
             }`}
             onClick={e => {
-              if (this.listitem.classList.contains("c-taskitem--completed")) {
-                this.listitem.classList.remove("c-taskitem--completed");
+              if (this.listitem.classList.contains("is--completed")) {
+                this.listitem.classList.remove("is--completed");
               } else {
-                this.listitem.classList.add("c-taskitem--completed");
+                this.listitem.classList.add("is--completed");
               }
               setTimeout(() => {
                 onCheckMark(todo.id, moment());
@@ -57,7 +58,7 @@ class Task extends React.Component {
             ref={input => {
               this.textInput = input;
             }}
-            className="c-text  c-text--textarea  c-text--flex"
+            className="c-text  c-text--textarea"
             placeholder=""
             value={todo.task}
             onFocus={e => {
@@ -74,7 +75,7 @@ class Task extends React.Component {
               onKeyUp(todo.id, e.target.value);
             }}
           />
-          <button className="u-button-reset c-icon c-icon--hover  c-icon--hidden">
+          <button className="c-icon  c-icon--small  c-icon--blue  c-icon--hidden">
             {sprite("circle")}
           </button>
         </div>

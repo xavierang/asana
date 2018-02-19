@@ -8,28 +8,27 @@
   outline: none;
   resize: none;
   cursor: text;
+
+  &.is--completed {
+    color: $aquamarine;
+  }
 }
 
-//small text
+//TEXT SIZE VARIANT
 .c-text--small {
   font-size: $global-font-size-small;
 }
 
-//larger text
 .c-text--large {
   font-size: $global-font-size-large;
 }
 
-//faded text
+//TEXT COLOR VARIANT
 .c-text--faded {
   color: $regent-gray;
 }
 
-.c-text--completed {
-  color: $aquamarine;
-}
-
-//text with focused animation
+//ANIMATED BLOCKS
 .c-text--animation {
   border: 1px solid transparent;
   overflow: hidden;
@@ -46,14 +45,16 @@
   }
 }
 
-//basic textarea
+.c-text--glow {
+  animation-name: fade-in-then-out;
+  animation-duration: 0.5s;
+}
+
+//TEXTAREA PROPERTY
 .c-text--textarea {
   border: none;
   overflow: hidden;
   padding: 0;
   align-self: center;
-}
-
-.c-text--flex {
   flex: 1;
 }

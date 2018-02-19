@@ -42,7 +42,7 @@ let Header = ({ visibilityFilter, onAddTaskBtn, onRadioChange }) => {
     <header className="o-card__header">
       <div className="c-list__header">
         <button
-          className="c-btn  c-btn--border"
+          className="c-btn  c-btn--filled"
           onClick={e => {
             e.preventDefault();
             onAddTaskBtn();
@@ -54,7 +54,7 @@ let Header = ({ visibilityFilter, onAddTaskBtn, onRadioChange }) => {
           Add Section
         </button>
         <button
-          className="u-button-reset  c-icon  c-icon--hover  c-icon--right"
+          className="c-icon  c-icon--small  c-icon--blue  c-icon--right"
           onClick={() => toggleTooltip()}
         >
           {sprite("equalizer")}

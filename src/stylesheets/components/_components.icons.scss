@@ -1,81 +1,75 @@
 .c-icon {
-  font: inherit;
-  font-size: $global-font-size;
-  cursor: pointer;
-  color: $regent-gray;
-  fill: $submarine;
-  flex: 0 0 30px;
   outline: 0;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  font-size: $global-font-size; //move to topo?
+  cursor: pointer;
+  fill: $submarine; //default icon color
+  flex: 0 0 30px;
   transition-duration: 0.5s;
   transition-property: border, box-shadow, color, opacity;
-  //default svg size for icons
+
+  //default setting for svg icons
+  .sprite {
+    display: block;
+  }
+
+  &.is--completed {
+    fill: $aquamarine;
+  }
+}
+
+//ICONS SIZE VARIANTS
+
+.c-icon--small {
   .sprite {
     height: 17px;
     width: 17px;
-    display: block;
     svg {
       height: 17px;
+      width: 17px;
     }
   }
 }
 
-//larger icons
 .c-icon--big {
   .sprite {
     height: 25px;
-    display: block;
+    width: 25px;
     svg {
       height: 25px;
+      width: 25px;
     }
   }
 }
 
-//icon that is styled as text
-.c-icon--text {
-  text-decoration: underline dotted;
-  border: 1px solid transparent;
-}
-
-//enable icon hover styles
-.c-icon--hover {
+//ICONS COLOR VARIANTS
+.c-icon--blue {
   &:hover {
     fill: $dodger-blue;
     color: $dodger-blue;
   }
 }
 
-//icons that are within a div that needs to be flex right
-.c-icon--right {
-  margin: 0 0 0 auto;
-  // &:focus + .c-tooltip,
-  // &:active + .c-tooltip {
-  //   display: block;
-  // }
-}
-
-//icon that are by default, hidden until hovered
-.c-icon--hidden {
-  opacity: 0;
-}
-
-//icon that is not default colors
-.c-icon--faded {
-  cursor: auto;
-  fill: $submarine;
-}
-
-//icon that needs to be filled differently
 .c-icon--aquamarine {
   &:hover {
     fill: $aquamarine;
-    //ITCSS - inverted triangle css
+    color: $aquamarine;
   }
 }
+
 
 .c-icon--white {
   fill: $white;
 }
 
-.c-icon--completed {
-  fill: $aquamarine;
+//ICONS POSITION VARIANTS
+.c-icon--right {
+  margin: 0 0 0 auto;
+}
+
+//ICONS HIDDEN UNTIL HOVERED
+.c-icon--hidden {
+  opacity: 0;
 }

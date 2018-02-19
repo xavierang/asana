@@ -1,9 +1,6 @@
 .c-formcomment {
   display: flex;
-  padding: 10px $inuit-global-spacing-unit;
-  .c-avatar {
-    margin-right: 10px;
-  }
+  padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
 }
 
 .c-formcomment__header {
@@ -32,7 +29,7 @@
   vertical-align: top;
   position: relative;
   overflow: hidden;
-  padding: 10px;
+  padding: $inuit-global-spacing-unit-small;
   width: 100%;
   border: none;
   transition: height 0.5s;
