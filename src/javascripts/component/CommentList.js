@@ -5,7 +5,7 @@ import Comment from "./Comment";
 
 const CommentList = ({ comments, activeTask, onCommentDeleteClick }) => {
   return (
-    <ul className="c-detail__comment">
+    <ul className="o-list-bare  c-detail__comment">
       {comments.map(comment => {
         if (comment.taskid === activeTask) {
           return (

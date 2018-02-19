@@ -2,11 +2,6 @@
   height: 40px;
   padding: 10px $inuit-global-spacing-unit;
   position: relative;
-  .c-icon--text {
-    position: absolute;
-    top: 14px;
-    left: 17px;
-  }
 }
 
 .c-forminput__task {
@@ -14,15 +9,12 @@
   display: flex;
   align-items: center;
   position: relative;
-  .c-text--large {
-    padding-left: 40px;
-  }
+  padding-left: 40px;
+
   .c-icon {
     position: absolute;
     top: 5px;
-    left: 3px;
-    width: 38px;
-    height: 27px;
+    left: 5px;
   }
 }
 
@@ -32,10 +24,12 @@
   display: flex;
   align-items: flex-start;
   position: relative;
+
   .c-text--animation {
     min-height: 24px;
     margin-left: 4px;
   }
+
   &:after {
     border-bottom: 1px solid $geyser;
     bottom: -1px;

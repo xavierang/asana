@@ -6,7 +6,7 @@ import { sprite } from "../helper";
 const Comment = ({ id, text, created, onCommentDeleteClick }) => {
   if (created) {
     return (
-      <li className="c-comment">
+      <li className="o-list-bare__item  c-comment">
         <div className="c-comment__header">
           <div className="c-avatar" />
         </div>
@@ -23,7 +23,7 @@ const Comment = ({ id, text, created, onCommentDeleteClick }) => {
               </span>
             </p>
             <button
-              className="u-button-reset  c-icon  c-icon--hover  c-icon--hidden"
+              className="c-icon  c-icon--small  c-icon--blue  c-icon--hidden"
               onClick={() => {
                 onCommentDeleteClick(id);
               }}

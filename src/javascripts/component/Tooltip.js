@@ -9,7 +9,7 @@ class Tooltip extends React.Component {
         <div className="c-tooltip__header">
           <p className="c-text  c-text--faded">VIEW</p>
           <button
-            className="u-button-reset  c-icon  c-icon--right  c-icon--hover"
+            className="c-icon  c-icon--small  c-icon--right  c-icon--blue"
             onClick={this.props.toggleTooltip}
           >
             {sprite("cross")}
@@ -71,9 +71,7 @@ class Tooltip extends React.Component {
             <option value="due-date">Due Date</option>
             <option value="likes">Likes</option>
           </select>
-          <button className="u-button-reset c-icon">
-            {sprite("chevron-thin-down")}
-          </button>
+          <button className="c-icon">{sprite("chevron-thin-down")}</button>
         </div>
       </div>
     );

@@ -20,17 +20,23 @@ let Comment = ({ selectedtask, dispatch }) => {
               Comment
             </label>
             <Textarea
-              className="c-formcomment__body-top c-text"
+              className="c-formcomment__body-top c-text  "
               id="comment"
               type="text"
               placeholder="Write a comment..."
-              onFocus={e => (e.target.placeholder = "")}
-              onBlur={e => (e.target.placeholder = "Write a comment...")}
+              onFocus={e => {
+                e.target.placeholder = "";
+                e.target.parentElement.classList.add("c-text--glow");
+              }}
+              onBlur={e => {
+                e.target.placeholder = "Write a comment...";
+                e.target.parentElement.classList.remove("c-text--glow");
+              }}
             />
 
             <div className="c-formcomment__body-btm">
               <button
-                className="c-btn c-btn--filled"
+                className="c-btn  c-btn--filled"
                 onClick={e => {
                   e.preventDefault();
                   const commentTextArea = document.getElementById("comment");

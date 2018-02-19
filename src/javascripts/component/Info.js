@@ -29,11 +29,11 @@ const Info = ({ selectedtask = {} }) => {
               </p>
               {selectedtask.completed && (
                 <div className="o-layout--stretch  o-layout--large">
-                  <button className="u-button-reset  c-icon  c-icon--completed ">
+                  <button className="c-icon  c-icon--small  is--completed ">
                     {sprite("filled-check")}
                   </button>
                   <p className="c-text  c-text--faded">
-                    <b className="c-text--completed">
+                    <b className="c-text  is--completed">
                       Xavier Ang completed this task
                     </b>{" "}
                     &nbsp;&nbsp;&nbsp;
@@ -43,7 +43,7 @@ const Info = ({ selectedtask = {} }) => {
               )}
               {!selectedtask.completed &&
                 selectedtask.donetime && (
-                  <p className="c-text c-text--small c-text--faded">
+                  <p className="c-text  c-text--small  c-text--faded">
                     Xavier Ang marked incomplete.<b>
                       &nbsp;&nbsp;&nbsp;
                       {moment(selectedtask.donetime).calendar()}

@@ -14,13 +14,16 @@
   background-size: 200% 100%;
   background-position: 101% bottom;
   background-repeat: no-repeat;
+
   &:first-child {
     margin-top: 0px;
   }
+
   &:first-child:hover {
     border-top: 1px solid transparent;
     border-bottom: 1px solid $geyser;
   }
+
   &:hover {
     border-bottom: 1px solid $geyser;
     border-top: 1px solid $geyser;
@@ -28,12 +31,13 @@
       opacity: 1;
     }
   }
-}
 
-.c-taskitem--completed {
-  animation-name: completed-gradient;
-  animation-duration: 0.5s;
-  animation-iteration-count: 1;
+  //triggeres animation when task is completed
+  &.is--completed {
+    animation-name: completed-gradient;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+  }
 }
 
 .c-taskitem--nohover {

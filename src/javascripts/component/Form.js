@@ -43,7 +43,7 @@ const Form = ({
     <div className="o-card__header">
       <div className="c-form__header">
         <button
-          className="u-button-reset  c-icon  c-icon--hover  c-icon--right"
+          className="c-icon  c-icon--blue  c-icon--small  c-icon--right"
           onClick={() => {
             onCloseForm();
           }}
@@ -70,7 +70,7 @@ const Form = ({
               }}
             />
             <button
-              className="u-button-reset  c-icon  c-icon--hover  c-icon--text"
+              className="c-btn  c-btn--text"
               onClick={e => toggleInput(e)}
             >
               Add to a Project
@@ -80,7 +80,7 @@ const Form = ({
           <div className="c-forminput__task">
             <button
               className={`u-button-reset  c-icon  c-icon--big  c-icon--aquamarine ${
-                selectedtask.completed ? "c-icon--completed " : ""
+                selectedtask.completed ? "is--completed " : ""
               }`}
               onClick={e => {
                 onCheckMark(selectedtask.id, moment());
@@ -103,9 +103,7 @@ const Form = ({
           </div>
 
           <div className="c-forminput__desc">
-            <button className="u-button-reset  c-icon  c-icon--faded">
-              {sprite("text")}
-            </button>
+            <button className="u-button-reset  c-icon">{sprite("text")}</button>
             <label htmlFor="description" className="u-hidden-visually">
               Description
             </label>
