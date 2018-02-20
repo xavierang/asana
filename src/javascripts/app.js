@@ -12,7 +12,6 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import todos from "./reducers/todos";
 import comments from "./reducers/comments";
 import activeTask from "./reducers/activeTask";
-import activeUser from "./reducers/activeUser";
 import visibilityFilter from "./reducers/visibilityFilter";
 
 //to fix icons on IE11
@@ -24,7 +23,6 @@ const rootReducer = combineReducers({
   todos,
   comments,
   activeTask,
-  activeUser,
   visibilityFilter
 });
 

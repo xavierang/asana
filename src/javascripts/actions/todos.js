@@ -1,6 +1,6 @@
 import database from "../base";
 
-export function addTodos(time, user) {
+export function addTodos(time, uid) {
   return dispatch => {
     const newKey = database.ref("todos").push().key;
     database.ref(`todos/${newKey}`).set({
@@ -9,7 +9,7 @@ export function addTodos(time, user) {
       description: "",
       created: time.toLocaleString(),
       completed: false,
-      user: user,
+      uid: uid,
       donetime: ""
     });
   };

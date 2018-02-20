@@ -5,8 +5,18 @@ import ReactTooltip from "react-tooltip";
 import CommentList from "./CommentList";
 import { sprite } from "../helper";
 
-const Info = ({ selectedtask = {} }) => {
+const Info = ({ selectedtask = {}, userDB }) => {
   if (selectedtask.created !== undefined) {
+    const user = Object.keys(userDB)
+      .map(u => {
+        if (userDB[u].uid === selectedtask.uid) {
+          return userDB[u].name;
+        }
+      })
+      .join("");
+
+    console.log(user);
+
     return (
       <div className="o-card__body">
         <div className="c-form__info">
@@ -14,14 +24,14 @@ const Info = ({ selectedtask = {} }) => {
             <div className="c-detail__time">
               <ReactTooltip />
               <p className="c-text  c-text--small  c-text--faded">
-                Xavier Ang created task.
+                {user} created task.
                 <b data-tip={moment(selectedtask.created).format("LLL")}>
                   &nbsp;&nbsp;&nbsp;
                   {moment(selectedtask.created).calendar()}
                 </b>
               </p>
               <p className="c-text  c-text--small  c-text--faded">
-                Xavier Ang assigned to you.
+                {user} assigned to you.
                 <b data-tip={moment(selectedtask.created).format("LLL")}>
                   &nbsp;&nbsp;&nbsp;
                   {moment(selectedtask.created).calendar()}
@@ -34,7 +44,7 @@ const Info = ({ selectedtask = {} }) => {
                   </button>
                   <p className="c-text  c-text--faded">
                     <b className="c-text  is--completed">
-                      Xavier Ang completed this task
+                      {user} completed this task
                     </b>{" "}
                     &nbsp;&nbsp;&nbsp;
                     {moment(selectedtask.donetime).format("LLLL")}{" "}
@@ -44,7 +54,7 @@ const Info = ({ selectedtask = {} }) => {
               {!selectedtask.completed &&
                 selectedtask.donetime && (
                   <p className="c-text  c-text--small  c-text--faded">
-                    Xavier Ang marked incomplete.<b>
+                    {user} marked incomplete.<b>
                       &nbsp;&nbsp;&nbsp;
                       {moment(selectedtask.donetime).calendar()}
                     </b>
@@ -52,7 +62,7 @@ const Info = ({ selectedtask = {} }) => {
                 )}
             </div>
 
-            <CommentList />
+            <CommentList userDB={userDB} />
           </div>
         </div>
       </div>

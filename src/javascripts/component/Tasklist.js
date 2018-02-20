@@ -11,33 +11,35 @@ import {
 import { sprite } from "../helper";
 
 const TaskList = ({
+  user,
   todos,
-  activeUser,
   visibilityFilter,
   onBackSpace,
   onFocusSetActive,
   onKeyUp,
   onCheckMark
-}) => (
-  <div className="o-card__body">
-    <div className="c-list__body">
-      <ul className="o-list-bare">
-        {visibleTask(filteredTask(todos, activeUser), visibilityFilter).map(
-          todo => (
-            <Task
-              key={todo.id}
-              todo={todo}
-              onBackSpace={onBackSpace}
-              onFocusSetActive={onFocusSetActive}
-              onKeyUp={onKeyUp}
-              onCheckMark={onCheckMark}
-            />
-          )
-        )}
-      </ul>
+}) => {
+  return (
+    <div className="o-card__body">
+      <div className="c-list__body">
+        <ul className="o-list-bare">
+          {visibleTask(filteredTask(todos, user), visibilityFilter).map(
+            todo => (
+              <Task
+                key={todo.id}
+                todo={todo}
+                onBackSpace={onBackSpace}
+                onFocusSetActive={onFocusSetActive}
+                onKeyUp={onKeyUp}
+                onCheckMark={onCheckMark}
+              />
+            )
+          )}
+        </ul>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const visibleTask = (todos, visibilityFilter) => {
   if (visibilityFilter === "SHOW_ALL") {
@@ -49,15 +51,14 @@ const visibleTask = (todos, visibilityFilter) => {
   }
 };
 
-const filteredTask = (todos, activeUser) => {
-  console.log(todos.filter(todo => todo.user === activeUser));
-  return todos.filter(todo => todo.user === activeUser);
+const filteredTask = (todos, user) => {
+  console.log(user);
+  return todos.filter(todo => todo.uid === user.uid);
 };
 
 const mapStateToProps = state => {
   return {
     todos: state.todos,
-    activeUser: state.activeUser,
     visibilityFilter: state.visibilityFilter
   };
 };
@@ -74,7 +75,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateTaskTodos(id, text));
     },
     onCheckMark: (id, donetime) => {
-      console.log(id, donetime);
       dispatch(toggleTodos(id, donetime));
     }
   };

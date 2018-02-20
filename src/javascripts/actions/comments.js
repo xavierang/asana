@@ -1,12 +1,13 @@
 import database from "../base";
 
-export function addComment(taskid, text, time) {
+export function addComment(taskid, text, uid, time) {
   const newKey = database.ref("comments").push().key;
   return dispatch => {
     database.ref(`comments/${newKey}`).set({
       id: newKey,
       taskid,
       text,
+      uid,
       created: time.toLocaleString()
     });
   };
