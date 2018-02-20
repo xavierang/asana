@@ -12,6 +12,7 @@ import { sprite } from "../helper";
 
 const TaskList = ({
   todos,
+  activeUser,
   visibilityFilter,
   onBackSpace,
   onFocusSetActive,
@@ -21,16 +22,18 @@ const TaskList = ({
   <div className="o-card__body">
     <div className="c-list__body">
       <ul className="o-list-bare">
-        {visibleTask(todos, visibilityFilter).map(todo => (
-          <Task
-            key={todo.id}
-            todo={todo}
-            onBackSpace={onBackSpace}
-            onFocusSetActive={onFocusSetActive}
-            onKeyUp={onKeyUp}
-            onCheckMark={onCheckMark}
-          />
-        ))}
+        {visibleTask(filteredTask(todos, activeUser), visibilityFilter).map(
+          todo => (
+            <Task
+              key={todo.id}
+              todo={todo}
+              onBackSpace={onBackSpace}
+              onFocusSetActive={onFocusSetActive}
+              onKeyUp={onKeyUp}
+              onCheckMark={onCheckMark}
+            />
+          )
+        )}
       </ul>
     </div>
   </div>
@@ -46,9 +49,15 @@ const visibleTask = (todos, visibilityFilter) => {
   }
 };
 
+const filteredTask = (todos, activeUser) => {
+  console.log(todos.filter(todo => todo.user === activeUser));
+  return todos.filter(todo => todo.user === activeUser);
+};
+
 const mapStateToProps = state => {
   return {
     todos: state.todos,
+    activeUser: state.activeUser,
     visibilityFilter: state.visibilityFilter
   };
 };

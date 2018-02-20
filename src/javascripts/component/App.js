@@ -7,11 +7,13 @@ import {
   updateTaskTodos,
   updateDescTodos,
   toggleTodos,
-  activeTodos
+  activeTodos,
+  getTodos
 } from "../actions/todos";
 
 import { getComment } from "../actions/comments";
-import { getTodos } from "../actions/todos";
+
+import { activeUsers } from "../actions/users";
 
 //import components needed to render
 import Header from "./Header";
@@ -25,8 +27,7 @@ import { sprite } from "../helper";
 class App extends React.Component {
   constructor() {
     super();
-    this.login = false;
-    this.signInWithPopup = this.signInWithPopup.bind(this);
+    this.logIn = this.logIn.bind(this);
     this.provider = new firebase.auth.GoogleAuthProvider();
     this.provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
   }
@@ -36,18 +37,20 @@ class App extends React.Component {
     this.props.getTodos();
   }
 
-  signInWithPopup(provider) {
+  logIn = provider => {
     firebase
       .auth()
       .signInWithPopup(provider)
-      .then(function(result) {
-        console.log(result);
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        // ...
-      })
+      .then(
+        function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+          this.props.onLogInSetActive(user.uid);
+        }.bind(this)
+      )
       .catch(function(error) {
         console.error(error);
         // Handle Errors here.
@@ -59,19 +62,20 @@ class App extends React.Component {
         var credential = error.credential;
         // ...
       });
-  }
+  };
 
   render() {
     const {
       todos,
       activeTask,
+      activeUser,
       onTaskChange,
       onDescChange,
       onCheckMark,
       onCloseForm
     } = this.props;
 
-    if (this.login === false) {
+    if (activeUser === "NONE") {
       return (
         <div className="c-login">
           <header className="c-login__header">
@@ -88,7 +92,9 @@ class App extends React.Component {
             <h2 className="c-text  c-text--huge  c-text--mirage">Log In</h2>
             <button
               className="c-btn  c-btn--filled"
-              onClick={() => this.signInWithPopup(this.provider)}
+              onClick={() => {
+                const u = this.logIn(this.provider);
+              }}
             >
               Use Google Account
             </button>
@@ -215,7 +221,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     todos: state.todos,
-    activeTask: state.activeTask
+    activeTask: state.activeTask,
+    activeUser: state.activeUser
   };
 };
 
@@ -238,6 +245,9 @@ const mapDispatchToProps = dispatch => {
     },
     getTodos: () => {
       dispatch(getTodos());
+    },
+    onLogInSetActive: id => {
+      dispatch(activeUsers(id));
     }
   };
 };
