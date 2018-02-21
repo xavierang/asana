@@ -4,25 +4,17 @@ import moment from "moment";
 import { sprite } from "../helper";
 
 class Comment extends React.Component {
-  componentDidMount() {
-    const photoURL = user.photoURL;
-    //set background-image url for avatar
-    document.querySelector(
-      ".c-avatar"
-    ).style.backgroundImage = `url('${photoURL}')`;
-  }
-
   render() {
-    const { comment, onCommentDeleteClick, userDB } = this.props;
+    const { comment, onCommentDeleteClick, user } = this.props;
 
     if (comment.created) {
-      const user =
-        userDB[Object.keys(userDB).filter(u => userDB[u].uid === comment.uid)];
-
       return (
         <li className="o-list-bare__item  c-comment">
           <div className="c-comment__header">
-            <div className="c-avatar" />
+            <div
+              className="c-avatar"
+              style={{ backgroundImage: `url(${user.photoURL}` }}
+            />
           </div>
 
           <div className="c-comment__body">

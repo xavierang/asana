@@ -12,10 +12,15 @@ const CommentList = ({
   return (
     <ul className="o-list-bare  c-detail__comment">
       {comments.map(comment => {
+        const user =
+          userDB[
+            Object.keys(userDB).filter(u => userDB[u].uid === comment.uid)
+          ];
         if (comment.taskid === activeTask) {
           return (
             <Comment
               key={comment.id}
+              user={user}
               comment={comment}
               onCommentDeleteClick={onCommentDeleteClick}
               userDB={userDB}

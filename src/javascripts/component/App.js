@@ -39,6 +39,7 @@ class App extends React.Component {
   componentWillMount() {
     this.props.getComment();
     this.props.getTodos();
+    this.props.onCloseForm();
 
     this.setState({
       users: sampleUsers
@@ -82,7 +83,6 @@ class App extends React.Component {
     const user = firebase.auth().currentUser;
 
     if (user) {
-      console.log(user);
       return (
         <div className="o-flex">
           <div className="o-flex--section">
