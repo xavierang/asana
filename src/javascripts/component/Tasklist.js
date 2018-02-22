@@ -52,7 +52,6 @@ const visibleTask = (todos, visibilityFilter) => {
 };
 
 const filteredTask = (todos, user) => {
-  console.log(user);
   return todos.filter(todo => todo.uid === user.uid);
 };
 

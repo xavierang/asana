@@ -30,20 +30,48 @@ class App extends React.Component {
     this.logIn = this.logIn.bind(this);
     this.provider = new firebase.auth.GoogleAuthProvider();
     this.provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-
     this.state = {
-      users: {}
+      userDB: {}
     };
   }
 
   componentWillMount() {
     this.props.getComment();
     this.props.getTodos();
-    this.props.onCloseForm();
+  }
 
-    this.setState({
-      users: sampleUsers
-    });
+  componentWillReceiveProps() {
+    if (this.props.todos || this.props.comments) {
+      const todoUIDs = this.props.todos.map(todo => {
+        return todo.uid;
+      });
+
+      const commentUIDs = this.props.comments.map(comment => {
+        return comment.uid;
+      });
+
+      const UIDs = Array.from(new Set([...todoUIDs, ...commentUIDs]));
+
+      fetch(
+        "https://us-central1-asana-xavier.cloudfunctions.net/getUserDetails",
+        {
+          body: JSON.stringify({ uid: UIDs }),
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "content-type": "application/json"
+          }
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 1) {
+            this.setState({
+              userDB: data.message
+            });
+          }
+        });
+    }
   }
 
   logIn = provider => {
@@ -73,12 +101,15 @@ class App extends React.Component {
   render() {
     const {
       todos,
+      comments,
       activeTask,
       onTaskChange,
       onDescChange,
       onCheckMark,
       onCloseForm
     } = this.props;
+
+    const { userDB } = this.state;
 
     const user = firebase.auth().currentUser;
 
@@ -106,8 +137,8 @@ class App extends React.Component {
                 onCloseForm={onCloseForm}
               />
               <Info
+                userDB={userDB}
                 selectedtask={todos.find(todo => todo.id === activeTask)}
-                userDB={this.state.users}
               />
               <CommentForm
                 user={user}
@@ -232,6 +263,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     todos: state.todos,
+    comments: state.comments,
     activeTask: state.activeTask
   };
 };

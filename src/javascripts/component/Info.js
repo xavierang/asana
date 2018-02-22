@@ -1,72 +1,15 @@
 import React from "react";
 import moment from "moment";
 import ReactTooltip from "react-tooltip";
-import fetchJsonp from "fetch-jsonp";
 
 import CommentList from "./CommentList";
 import { sprite } from "../helper";
 
-// async function getUserDetailsFromFirebase(selectedtask) {
-//   console.log("1");
-//   const userFetch = await fetch(
-//     "https://us-central1-asana-xavier.cloudfunctions.net/getUserDetails",
-//     {
-//       body: JSON.stringify({ uid: [selectedtask.uid] }),
-//       method: "POST",
-//       mode: "cors",
-//       headers: {
-//         "content-type": "application/json"
-//       }
-//     }
-//   );
-//   console.log("2");
-
-//   const U = await userFetch.json();
-//   console.log("3");
-//   console.log(U);
-
-//   return U;
-// }
-
 class Info extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      users: []
-    };
-  }
-
-  componentWillReceiveProps() {
-    if (this.props.selectedtask !== undefined) {
-      fetch(
-        "https://us-central1-asana-xavier.cloudfunctions.net/getUserDetails",
-        {
-          body: JSON.stringify({ uid: [this.props.selectedtask.uid] }),
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "content-type": "application/json"
-          }
-        }
-      )
-        .then(res => res.json())
-        .then(data => {
-          if (data) {
-            this.setState({
-              users: data.users[0].displayName
-            });
-          }
-        });
-    }
-  }
-
   render() {
     const { selectedtask = {}, userDB } = this.props;
-    const { users } = this.state;
 
     if (selectedtask.created !== undefined) {
-      console.log(users);
-      console.log(selectedtask);
       return (
         <div className="o-card__body">
           <div className="c-form__info">
@@ -74,14 +17,20 @@ class Info extends React.Component {
               <div className="c-detail__time">
                 <ReactTooltip />
                 <p className="c-text  c-text--small  c-text--faded">
-                  {users} created task.
+                  {Object.keys(userDB).length
+                    ? userDB.find(u => u.uid === selectedtask.uid).displayName
+                    : ""}{" "}
+                  created task.
                   <b data-tip={moment(selectedtask.created).format("LLL")}>
                     &nbsp;&nbsp;&nbsp;
                     {moment(selectedtask.created).calendar()}
                   </b>
                 </p>
                 <p className="c-text  c-text--small  c-text--faded">
-                  {users} assigned to you.
+                  {Object.keys(userDB).length
+                    ? userDB.find(u => u.uid === selectedtask.uid).displayName
+                    : ""}{" "}
+                  assigned to you.
                   <b data-tip={moment(selectedtask.created).format("LLL")}>
                     &nbsp;&nbsp;&nbsp;
                     {moment(selectedtask.created).calendar()}
@@ -94,7 +43,11 @@ class Info extends React.Component {
                     </button>
                     <p className="c-text  c-text--faded">
                       <b className="c-text  is--completed">
-                        {users} completed this task
+                        {Object.keys(userDB).length
+                          ? userDB.find(u => u.uid === selectedtask.uid)
+                              .displayName
+                          : ""}{" "}
+                        completed this task
                       </b>{" "}
                       &nbsp;&nbsp;&nbsp;
                       {moment(selectedtask.donetime).format("LLLL")}{" "}
@@ -104,7 +57,11 @@ class Info extends React.Component {
                 {!selectedtask.completed &&
                   selectedtask.donetime && (
                     <p className="c-text  c-text--small  c-text--faded">
-                      {users} marked incomplete.<b>
+                      {Object.keys(userDB).length
+                        ? userDB.find(u => u.uid === selectedtask.uid)
+                            .displayName
+                        : ""}{" "}
+                      marked incomplete.<b>
                         &nbsp;&nbsp;&nbsp;
                         {moment(selectedtask.donetime).calendar()}
                       </b>

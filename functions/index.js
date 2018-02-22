@@ -13,6 +13,10 @@ exports.getUserDetails = functions.https.onRequest((req, res) => {
         .send({ status: 0, message: "Expecting input to be an array of UIDs" });
     }
 
+    if (uids.length === 0) {
+      res.status(400).send({ status: 0, message: "No UIDs to fetch data" });
+    }
+
     const output = uids.map(uid => {
       return new Promise((resolve, reject) => {
         admin
@@ -29,34 +33,10 @@ exports.getUserDetails = functions.https.onRequest((req, res) => {
 
     Promise.all(output)
       .then(users => {
-        return res.status(200).send({ users });
+        return res.status(200).send({ status: 1, message: users });
       })
       .catch(error => {
-        return res.status(500).send({ error });
+        return res.status(500).send({ status: 0, message: error });
       });
-    // return res.status(200).send({ test: "Testing functions" });
   });
-
-  //   const uids = req.body.uid;
-  //   const output = uids.map(uid => {
-  //     return new Promise((resolve, reject) => {
-  //       admin
-  //         .auth()
-  //         .getUser(uid)
-  //         .then(userRecord => {
-  //           return resolve(userRecord);
-  //         })
-  //         .catch(error => {
-  //           reject(error);
-  //         });
-  //     });
-  //   });
-
-  //   Promise.all(output)
-  //     .then(users => {
-  //       return users;
-  //     })
-  //     .catch(error => {
-  //       return error;
-  //     });
 });

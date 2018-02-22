@@ -5,7 +5,7 @@ import { sprite } from "../helper";
 
 class Comment extends React.Component {
   render() {
-    const { comment, onCommentDeleteClick, user } = this.props;
+    const { userDB, comment, onCommentDeleteClick } = this.props;
 
     if (comment.created) {
       return (
@@ -13,14 +13,22 @@ class Comment extends React.Component {
           <div className="c-comment__header">
             <div
               className="c-avatar"
-              style={{ backgroundImage: `url(${user.photoURL}` }}
+              style={{
+                backgroundImage: `url(${
+                  Object.keys(userDB).length
+                    ? userDB.find(u => u.uid === comment.uid).photoURL
+                    : ""
+                }`
+              }}
             />
           </div>
 
           <div className="c-comment__body">
             <div className="c-comment--user">
               <p className="c-text">
-                {user.name}
+                {Object.keys(userDB).length
+                  ? userDB.find(u => u.uid === comment.uid).displayName
+                  : ""}
                 <span className="c-text  c-text--faded">
                   &nbsp;&nbsp;&nbsp;
                   {moment(comment.created)
