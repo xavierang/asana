@@ -1,5 +1,6 @@
 .c-btn {
   box-shadow: none;
+  border-radius: $global-radius;
   font: inherit;
   font-size: $global-font-size; //move to topo
   cursor: pointer;
@@ -12,9 +13,9 @@
 //buttons with outline border
 .c-btn--border {
   border: 1px solid $submarine;
-  border-radius: $global-radius;
   background-color: $white;
   color: $submarine;
+
   &:hover {
     background-color: $porcelain;
     border-color: $ebony-clay;
@@ -22,24 +23,45 @@
   }
 }
 
+.c-btn--transparent {
+  background-color: transparent;
+  color: $white;
+  border: 1px solid $white;
+
+  &:hover {
+    background-color: $white;
+    border-color: titan-white;
+    color: $nevada;
+  }
+}
+
 //buttons that has filled background
 .c-btn--filled {
   background-color: $dodger-blue;
   border: 1px solid $dodger-blue;
-  border-radius: $global-radius;
   color: $white;
   margin: 10px;
+
   &:hover {
     border-color: $cerulean;
     background-color: $cerulean;
   }
+
   &:hover + .c-btn--hidden {
     opacity: 1;
+  }
+
+  &.is--disabled {
+    cursor: default;
+    background-color: $porcelain;
+    border-color: $geyser;
+    color: $submarine;
   }
 }
 
 //buttons that looks like a link
 .c-btn--text {
+  color: $regent-gray;
   text-decoration: underline dotted;
   border: none;
   &:hover,
@@ -56,4 +78,9 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.c-btn--right {
+  display: block;
+  margin: 0 0 0 auto;
 }

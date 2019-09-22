@@ -11,30 +11,35 @@ import {
 import { sprite } from "../helper";
 
 const TaskList = ({
+  user,
   todos,
   visibilityFilter,
   onBackSpace,
   onFocusSetActive,
   onKeyUp,
   onCheckMark
-}) => (
-  <div className="o-card__body">
-    <div className="c-list__body">
-      <ul className="o-list-bare">
-        {visibleTask(todos, visibilityFilter).map(todo => (
-          <Task
-            key={todo.id}
-            todo={todo}
-            onBackSpace={onBackSpace}
-            onFocusSetActive={onFocusSetActive}
-            onKeyUp={onKeyUp}
-            onCheckMark={onCheckMark}
-          />
-        ))}
-      </ul>
+}) => {
+  return (
+    <div className="o-card__body">
+      <div className="c-list__body">
+        <ul className="o-list-bare">
+          {visibleTask(filteredTask(todos, user), visibilityFilter).map(
+            todo => (
+              <Task
+                key={todo.id}
+                todo={todo}
+                onBackSpace={onBackSpace}
+                onFocusSetActive={onFocusSetActive}
+                onKeyUp={onKeyUp}
+                onCheckMark={onCheckMark}
+              />
+            )
+          )}
+        </ul>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const visibleTask = (todos, visibilityFilter) => {
   if (visibilityFilter === "SHOW_ALL") {
@@ -44,6 +49,10 @@ const visibleTask = (todos, visibilityFilter) => {
   } else {
     return todos.filter(todo => !todo.completed);
   }
+};
+
+const filteredTask = (todos, user) => {
+  return todos.filter(todo => todo.uid === user.uid);
 };
 
 const mapStateToProps = state => {
@@ -65,7 +74,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateTaskTodos(id, text));
     },
     onCheckMark: (id, donetime) => {
-      console.log(id, donetime);
       dispatch(toggleTodos(id, donetime));
     }
   };

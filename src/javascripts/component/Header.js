@@ -7,7 +7,7 @@ import { addTodos, activeTodos, setFilter } from "../actions/todos";
 
 import { sprite } from "../helper";
 
-let Header = ({ visibilityFilter, onAddTaskBtn, onRadioChange }) => {
+let Header = ({ user, visibilityFilter, onAddTaskBtn, onRadioChange }) => {
   const toggleTooltip = () => {
     const tooltip = document.getElementsByClassName("c-tooltip");
     const tooltipClasses = tooltip[0].classList;
@@ -45,7 +45,8 @@ let Header = ({ visibilityFilter, onAddTaskBtn, onRadioChange }) => {
           className="c-btn  c-btn--filled"
           onClick={e => {
             e.preventDefault();
-            onAddTaskBtn();
+            console.log(user);
+            onAddTaskBtn(user.uid);
           }}
         >
           Add Task
@@ -78,8 +79,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddTaskBtn: () => {
-      dispatch(addTodos(moment()));
+    onAddTaskBtn: uid => {
+      dispatch(addTodos(moment(), uid));
     },
 
     onRadioChange: filter => {

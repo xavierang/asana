@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { delComment } from "../actions/comments";
 import Comment from "./Comment";
 
-const CommentList = ({ comments, activeTask, onCommentDeleteClick }) => {
+const CommentList = ({
+  userDB,
+  comments,
+  activeTask,
+  onCommentDeleteClick
+}) => {
   return (
     <ul className="o-list-bare  c-detail__comment">
       {comments.map(comment => {
@@ -11,9 +16,8 @@ const CommentList = ({ comments, activeTask, onCommentDeleteClick }) => {
           return (
             <Comment
               key={comment.id}
-              id={comment.id}
-              text={comment.text}
-              created={comment.created}
+              comment={comment}
+              userDB={userDB}
               onCommentDeleteClick={onCommentDeleteClick}
             />
           );

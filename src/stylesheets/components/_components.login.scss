@@ -1,0 +1,111 @@
+.c-login {
+  background: linear-gradient(
+    to top right,
+    rgba(255, 82, 99, 0.9) 10%,
+    rgba(255, 115, 129, 0.9) 65%,
+    rgba(252, 189, 1, 0.9) 125%
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: $inuit-global-spacing-unit-small;
+  align-items: center;
+}
+
+.c-login__header {
+  padding: $inuit-global-spacing-unit-small;
+
+  a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    > * {
+      margin-left: $inuit-global-spacing-unit-small;
+    }
+  }
+}
+
+.c-login__body {
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $inuit-global-spacing-unit-large $inuit-global-spacing-unit-huge;
+  margin: $inuit-global-spacing-unit-small auto 0 auto;
+  background-color: $white;
+  > * {
+    margin: $inuit-global-spacing-unit-small 0;
+  }
+
+  > :first-child {
+    margin: 0;
+  }
+}
+
+.c-login__divider {
+  width: 100%;
+  color: $submarine;
+  text-align: center;
+  position: relative;
+  padding: $inuit-global-spacing-unit-small 0;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 45%;
+    border-bottom: 1px solid $submarine;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 45%;
+    border-bottom: 1px solid $submarine;
+  }
+}
+
+.c-login__form {
+  > * {
+    flex: 1;
+  }
+
+  > :last-child {
+    margin-top: $inuit-global-spacing-unit-large;
+  }
+
+  input {
+    padding: 0 0 0 $inuit-global-spacing-unit-small;
+    height: 40px;
+    border: 1px solid $geyser;
+    margin-top: $inuit-global-spacing-unit-small;
+    margin-bottom: $inuit-global-spacing-unit-small;
+    width: 100%;
+    border-radius: $global-radius;
+    outline: none;
+    &:focus {
+      border-color: $submarine;
+      box-shadow: inset 0px 1px 1px 0px $porcelain;
+    }
+  }
+}
+
+.c-login__footer {
+  padding: $inuit-global-spacing-unit;
+  text-align: center;
+}
+
+.c-login__list {
+  margin-top: $inuit-global-spacing-unit;
+
+  > *::before {
+    content: "\2022";
+    color: $white;
+  }
+
+  a {
+    margin-right: $inuit-global-spacing-unit-small;
+  }
+}

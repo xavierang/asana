@@ -1,7 +1,6 @@
 .c-text {
   background: transparent;
   font-size: $global-font-size;
-  height: $global-font-size;
   color: $black;
   border-radius: $global-radius;
   margin: 0;
@@ -23,9 +22,32 @@
   font-size: $global-font-size-large;
 }
 
+.c-text--huge {
+  font-size: $global-font-size-huge;
+  font-weight: 400;
+}
+
 //TEXT COLOR VARIANT
 .c-text--faded {
   color: $regent-gray;
+}
+
+.c-text--white {
+  color: $white;
+  border-color: transparent;
+  &:hover,
+  &:focus {
+    border-color: $white;
+  }
+}
+
+.c-text--mirage {
+  color: $mirage;
+}
+
+.c-text--gray {
+  color: $oslo-gray;
+  border-color: $oslo-gray;
 }
 
 //ANIMATED BLOCKS
@@ -57,4 +79,16 @@
   padding: 0;
   align-self: center;
   flex: 1;
+}
+
+//LINK PROPERTY
+
+.c-text--anchor {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+  padding: 0;
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid;
+  }
 }

@@ -23,24 +23,16 @@
 //ICONS SIZE VARIANTS
 
 .c-icon--small {
-  .sprite {
+  svg {
     height: 17px;
     width: 17px;
-    svg {
-      height: 17px;
-      width: 17px;
-    }
   }
 }
 
 .c-icon--big {
-  .sprite {
+  svg {
     height: 25px;
     width: 25px;
-    svg {
-      height: 25px;
-      width: 25px;
-    }
   }
 }
 
@@ -57,6 +49,10 @@
     fill: $aquamarine;
     color: $aquamarine;
   }
+}
+
+.c-icon--white {
+  fill: $white;
 }
 
 //ICONS POSITION VARIANTS
